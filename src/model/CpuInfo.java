@@ -6,6 +6,15 @@ public class CpuInfo {
 	private String cpuHz;
 	private String gpu;
 	private String cpuProcess;
+	private String cpuBrand;
+
+	public String getCpuBrand() {
+		return cpuBrand;
+	}
+
+	public void setCpuBrand(String cpuBrand) {
+		this.cpuBrand = cpuBrand;
+	}
 
 	public String getCpuName() {
 		return cpuName;

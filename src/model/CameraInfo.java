@@ -3,7 +3,7 @@ package model;
 public class CameraInfo {
 	private String cameraName;
 	private String cameraPx;
-	private float sperture;
+	private String sperture;
 	private boolean supportois;
 
 	public String getCameraName() {
@@ -22,11 +22,11 @@ public class CameraInfo {
 		this.cameraPx = cameraPx;
 	}
 
-	public float getSperture() {
+	public String getSperture() {
 		return sperture;
 	}
 
-	public void setSperture(float sperture) {
+	public void setSperture(String sperture) {
 		this.sperture = sperture;
 	}
 

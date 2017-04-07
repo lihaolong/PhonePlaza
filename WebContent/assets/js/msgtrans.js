@@ -13,9 +13,10 @@ function sendId(id) {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
 			var msg = xmlhttp.responseText;
-			alert(msg);
-			window.open("phoneinfo.html");
+			//alert(msg);
 			window.sessionStorage.setItem("phoneinfo", msg);
+			alert(window.sessionStorage.getItem("phoneinfo"));
+			window.open("phoneinfo.html");
 		}
 	}
 }

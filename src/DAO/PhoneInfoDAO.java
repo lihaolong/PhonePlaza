@@ -1,6 +1,5 @@
 package DAO;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,34 +8,36 @@ import java.util.Map;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import model.CameraInfo;
+import model.CpuInfo;
 import model.PhoneInfo;
 
 public class PhoneInfoDAO {
 
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/phoneplaza";
-	
-	private static Connection getCon(){
+
+	private static Connection getCon() {
 		Connection con = null;
-	try
-	{
-		System.out.println(driver);
-		Class.forName(driver);
-		con = DriverManager.getConnection(url,"root","123456");
-	}catch(ClassNotFoundException|
-	SQLException e)
-	{
-		e.printStackTrace();
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, "root", "123456");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return con;
 	}
-	return con;
-	}
-	public PhoneInfo query(String phoneName) throws SQLException{
+
+	public PhoneInfo query(String phoneName) throws SQLException {
 		PhoneInfo phoneInfo = new PhoneInfo();
-		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement("select * from phoneinfo where phonename = ?");
+		PreparedStatement pst = (PreparedStatement) getCon()
+				.prepareStatement("select * from phoneinfo where phonename = ?");
 		pst.setString(1, phoneName);
 		ResultSet rs = pst.executeQuery();
-		while(rs.next()){
-			phoneInfo.setPhoneBrand(rs.getString("phonebrand"));;
+		while (rs.next()) {
+			phoneInfo.setPhoneName(rs.getString("phonename"));
+			phoneInfo.setPhoneBrand(rs.getString("phonebrand"));
+			;
 			phoneInfo.setPrice(rs.getInt("price"));
 			phoneInfo.setWeight(rs.getString("weight"));
 			phoneInfo.setScreenSize(rs.getFloat("screensize"));
@@ -51,5 +52,39 @@ public class PhoneInfoDAO {
 			phoneInfo.setNettype(rs.getString("nettype"));
 		}
 		return phoneInfo;
+	}
+
+	public CpuInfo queryCpu(String phoneName) throws SQLException {
+		CpuInfo cpuInfo = new CpuInfo();
+		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(
+				"select * from cpuinfo where cpuinfo.cpuname in (select cpuinfo from phonecpucamera where phonename = ?)");
+		pst.setString(1, phoneName);
+		ResultSet rs = pst.executeQuery();
+		while (rs.next()) {
+			cpuInfo.setCpuName(rs.getString("cpuname"));
+			cpuInfo.setCpuCoreNum(rs.getInt("cpucorenum"));
+			cpuInfo.setCpuHz(rs.getString("cpuhz"));
+			cpuInfo.setGpu(rs.getString("gpu"));
+			cpuInfo.setCpuProcess(rs.getString("cpuprocess"));
+			cpuInfo.setCpuBrand(rs.getString("cpubrand"));
+		}
+		System.out.println(cpuInfo.getGpu());
+		return cpuInfo;
+	}
+
+	public CameraInfo queryCamera(String phoneName) throws SQLException {
+		CameraInfo cameraInfo = new CameraInfo();
+		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(
+				"select * from  camerainfo where camerainfo.cameraname in (select camerainfo from phonecpucamera where phonename = ?)");
+		pst.setString(1, phoneName);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()){
+			cameraInfo.setCameraName(rs.getString("cameraname"));
+			cameraInfo.setCameraPx(rs.getString("camerapx"));
+			cameraInfo.setSperture(rs.getString("sperture"));
+			cameraInfo.setSupportois(rs.getBoolean("supportois"));
+		}
+		System.out.println(cameraInfo.getSperture());
+		return cameraInfo;
 	}
 }
