@@ -50,7 +50,7 @@ public class PhoneServlet extends HttpServlet {
 
 		System.out.println(phoneName);
 		System.out.println(cpuInfo.getCpuBrand());
-		//System.out.println(cameraInfo.getSperture());
+		System.out.println(cameraInfo.getCameraName());
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(phoneJson.toString());

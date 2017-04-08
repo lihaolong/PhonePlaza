@@ -8,6 +8,8 @@
 	href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" />
 <link rel="stylesheet" href="assets/css/list.css">
 <link rel="stylesheet" href="assets/css/header.css" />
+<script type="text/javascript" src="assets/js/msgtrans.js"></script>
+<script type="text/javascript" src="assets/js/list.js"></script>
 <title>机型列表</title>
 </head>
 <body>
@@ -16,10 +18,10 @@
 			<img src="assets/img/logo2.png" alt="logo" />
 			<li class="logo"><a
 				style="font-size: 36px; color: white; font-style: italic; font-weight: bolder" href="index.html">PhonePlaza</a></li>
-			<li class="first_page"><a style="font-size: 24px; color: white;" href="index.html">首页</a></li>
-			<li class="phone_list"><a style="font-size: 24px; color: white;" href="list.html">机型列表</a></li>
+			<li class="first_page"><a style="font-size: 20px; color: white;" href="index.html">首页</a></li>
+			<li class="phone_list"><a style="font-size: 20px; color: white;" href="list.html">机型列表</a></li>
 			<li class="phone_compare"><a
-				style="font-size: 24px; color: white;">手机对比</a></li>
+				style="font-size: 20px; color: white;">手机对比</a></li>
 		</ul>
 		<div class="inner_search">
 			<input type="text" placeholder="搜索手机或专题" /> <span class="search_btn"
@@ -56,7 +58,7 @@
 				<a>三星</a>
 				</li>
 				<li>
-				<a>苹果</a>
+				<a id="苹果" onclick="sendQueryInfo(this.id);">苹果</a>
 				</li>
 				</ul>
 			</div>
@@ -127,6 +129,15 @@
 			<div>
 				<a>售卖价格</a>
 			</div>
+			</div>
+			<div class="content-phone">
+			<ul id="phone-ul">
+			<!-- <li><a id="mate9" onclick="sendId(this.id);"><img alt="" src="assets/img/phoneimg/mate9.jpg"></a></li>
+			<li><a href=""><img alt="" src="assets/img/phoneimg/mix.jpg"></a></li>
+			<li><a href=""><img alt="" src="assets/img/phoneimg/mix.jpg"></a></li>
+			<li><a href=""><img alt="" src="assets/img/phoneimg/mix.jpg"></a></li>
+			<li><a ><img alt="" src=""></a></li> -->
+			</ul>
 			</div>
 		</div>
 	<div class="footer">
