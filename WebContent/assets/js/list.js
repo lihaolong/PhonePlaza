@@ -12,33 +12,31 @@ function sendQueryInfo(info1, info2) {
 	}
 }
 
-var creatLi = function(phoneName) {
-	var json = 
-		[ {
-			"phonename" : "iphone7",
-			"price" : "5888",
-			"selltime" : "2016-9-20"
-		}, {
-			"phonename" : "mate9",
-			"price" : "4888",
-			"selltime" : "2016-6-20"
-		}, {
-			"phonename" : "iphone7p",
-			"price" : "3888",
-			"selltime" : "2016-1-20"
-		} ];
-	for (var phonename in json) {
-		var div = document.getElementById("phone-ul");
+var creatLi = function(json) {
+	/*
+	 * var json = [ { "phonename" : "iphone7", "price" : "5888", "selltime" :
+	 * "2016-9-20" }, { "phonename" : "mate9", "price" : "4888", "selltime" :
+	 * "2016-6-20" }, { "phonename" : "iphone7p", "price" : "3888", "selltime" :
+	 * "2016-1-20" } ];
+	 */
+	jsonp = JSON.parse(json);
+	var ul = document.getElementById("phone-ul");
+	var i = 0;
+	for (var phonename in jsonp) {
+		i++;
+		var jsonitem = jsonp[phonename].phonename;
 		var li1 = document.createElement("li");
-		var a1 = document.createElement("a");
 		var img1 = document.createElement("img");
-		div.appendChild(li1);
-		li1.appendChild(a1);
-		a1.appendChild(img1);
-		img1.setAttribute("src", "assets/img/phoneimg/" + json[phonename].phonename + ".jpg");
-		a1.setAttribute("id", phoneName);
-		a1.addEventListener("click", (function() {
-			return sendId(phoneName);
-		}), false);
+		ul.appendChild(li1);
+		li1.appendChild(img1);
+		img1.setAttribute("src", "assets/img/phoneimg/" + jsonitem + ".jpg");
+		li1.setAttribute("id", jsonitem);
+		//alert(jsonitem);
+		(function (jsonitem) {
+            li1.addEventListener("click", function(){
+            	alert(jsonitem);
+            	return sendId(jsonitem);
+            }, false)	
+        })(jsonitem);
 	}
 }

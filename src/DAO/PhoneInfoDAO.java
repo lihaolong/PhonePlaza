@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -16,6 +21,7 @@ public class PhoneInfoDAO {
 
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/phoneplaza";
+	public static String sqlByphonebrand = "select phonename,selltime,price from phoneinfo where phonebrand = ?";
 
 	private static Connection getCon() {
 		Connection con = null;
@@ -86,5 +92,21 @@ public class PhoneInfoDAO {
 		}
 		System.out.println(cameraInfo.getSperture());
 		return cameraInfo;
+	}
+	
+	public JSONArray querylist(String info) throws SQLException, JSONException{
+		JSONArray jsonArray = new JSONArray();
+		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(sqlByphonebrand);
+		pst.setString(1, info);
+		ResultSet rs = pst.executeQuery();
+		//System.out.println(rs.next());
+		while(rs.next()){
+			JSONObject jsonLan = new JSONObject();
+			jsonLan.put("phonename", rs.getString("phonename"));
+			jsonLan.put("selltime", rs.getDate("selltime"));
+			jsonLan.put("price", rs.getInt("price"));
+			jsonArray.put(jsonLan);
+		}
+		return jsonArray;
 	}
 }
