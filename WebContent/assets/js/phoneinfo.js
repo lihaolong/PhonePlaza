@@ -25,5 +25,6 @@ jQuery(document).ready(function() {
 		document.getElementById("supportois").innerHTML = "不支持";
 	}
 	var phonenameinsrc = jsonp.phonename;
-	document.getElementById("phoneimg").src = "assets/img/phoneimg/"+phonenameinsrc+".jpg";
+	var phonepic = document.getElementById("phoneimg");
+	phonepic.src = "assets/img/phonelist/"+phonenameinsrc+".jpg";
 });

@@ -21,7 +21,8 @@ public class PhoneInfoDAO {
 
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/phoneplaza";
-	public static String sqlByphonebrand = "select phonename,selltime,price from phoneinfo where phonebrand = ?";
+	private static String sqlByphonebrand = "select phonename,selltime,price from phoneinfo where phonebrand = ?";
+	private static String sqlAll = "select phonename,selltime,price from phoneinfo";
 
 	private static Connection getCon() {
 		Connection con = null;
@@ -94,10 +95,20 @@ public class PhoneInfoDAO {
 		return cameraInfo;
 	}
 	
-	public JSONArray querylist(String info) throws SQLException, JSONException{
+	public JSONArray querylist(String info,String tag) throws SQLException, JSONException{
 		JSONArray jsonArray = new JSONArray();
-		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(sqlByphonebrand);
-		pst.setString(1, info);
+		PreparedStatement pst = null;
+		int tagi = Integer.parseInt(tag);
+		switch (tagi) {
+		case 1:
+			pst = (PreparedStatement) getCon().prepareStatement(sqlByphonebrand);
+			pst.setString(1, info);
+			break;
+		case 2:
+			pst = (PreparedStatement) getCon().prepareStatement(sqlAll);
+			break;
+		}
+		
 		ResultSet rs = pst.executeQuery();
 		//System.out.println(rs.next());
 		while(rs.next()){

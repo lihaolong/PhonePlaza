@@ -8,6 +8,7 @@
 	href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" />
 <link rel="stylesheet" href="assets/css/list.css">
 <link rel="stylesheet" href="assets/css/header.css" />
+<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="assets/js/msgtrans.js"></script>
 <script type="text/javascript" src="assets/js/list.js"></script>
 <title>机型列表</title>
@@ -40,13 +41,13 @@
 				<div class="line"></div>
 				<ul>
 				<li>
-				<a>华为</a>
+				<a id="华为" onclick="sendQueryInfo(this.id,1);">华为</a>
 				</li>
 				<li>
 				<a>小米</a>
 				</li>
 				<li>
-				<a id="meizu" onclick="sendQueryInfo(this.id);">魅族</a>
+				<a id="meizu" onclick="sendQueryInfo(this.id,1);">魅族</a>
 				</li>
 				<li>
 				<a>OPPO</a>
@@ -55,10 +56,10 @@
 				<a>vivo</a>
 				</li>
 				<li>
-				<a>三星</a>
+				<a id="三星" onclick="sendQueryInfo(this.id,1);">三星</a>
 				</li>
 				<li>
-				<a id="苹果" onclick="sendQueryInfo(this.id);">苹果</a>
+				<a id="苹果" onclick="sendQueryInfo(this.id,1);">苹果</a>
 				</li>
 				</ul>
 			</div>
@@ -127,7 +128,7 @@
 				<a>上市时间</a>
 			</div>
 			<div>
-				<a>售卖价格</a>
+				<a onclick="sortByprice()">售卖价格</a>
 			</div>
 			</div>
 			<div class="content-phone">

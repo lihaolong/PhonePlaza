@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import DAO.PhoneInfoDAO;
 @WebServlet("/PhoneQueryServlet")
@@ -31,7 +30,7 @@ public class PhoneQueryServlet extends HttpServlet {
 		
 		JSONArray json = new JSONArray();
 		try {
-			json = phoneInfoDAO.querylist(info1);
+			json = phoneInfoDAO.querylist(info1,info2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
