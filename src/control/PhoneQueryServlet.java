@@ -24,19 +24,20 @@ public class PhoneQueryServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String info1 = request.getParameter("info1");
 		String info2 = request.getParameter("info2");
+		String info3 = request.getParameter("info3");
 		PhoneInfoDAO phoneInfoDAO = new PhoneInfoDAO();
 		
 		
 		
 		JSONArray json = new JSONArray();
 		try {
-			json = phoneInfoDAO.querylist(info1,info2);
+			json = phoneInfoDAO.querylist(info1,info2,info3);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		System.out.println(json);
+		System.out.println(info1+info2+info3);
 		response.getWriter().write(json.toString());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,6 +23,9 @@ public class PhoneInfoDAO {
 	private static String url = "jdbc:mysql://localhost:3306/phoneplaza";
 	private static String sqlByphonebrand = "select phonename,selltime,price from phoneinfo where phonebrand = ?";
 	private static String sqlAll = "select phonename,selltime,price from phoneinfo";
+	private static String sqlPrice = "select phonename,selltime,price from phoneinfo where price>=? and price<=?";
+	private static String sqlCpu = "select phonename,price,selltime from phoneinfo where phonename in (select phonename from phonecpucamera where cpuinfo in (select cpuname from cpuinfo where cpubrand = ?))";
+	private static String sqlScreenSize = "select phonename,selltime,price from phoneinfo where screensize>=? and screensize<=?";
 
 	private static Connection getCon() {
 		Connection con = null;
@@ -95,22 +98,35 @@ public class PhoneInfoDAO {
 		return cameraInfo;
 	}
 	
-	public JSONArray querylist(String info,String tag) throws SQLException, JSONException{
+	public JSONArray querylist(String info1,String info2,String info3) throws SQLException, JSONException{
 		JSONArray jsonArray = new JSONArray();
 		PreparedStatement pst = null;
-		int tagi = Integer.parseInt(tag);
+		int tagi = Integer.parseInt(info2);
 		switch (tagi) {
 		case 1:
 			pst = (PreparedStatement) getCon().prepareStatement(sqlByphonebrand);
-			pst.setString(1, info);
+			pst.setString(1, info1);
 			break;
 		case 2:
 			pst = (PreparedStatement) getCon().prepareStatement(sqlAll);
 			break;
+		case 3:
+			pst = (PreparedStatement) getCon().prepareStatement(sqlPrice);
+			pst.setString(1, info1);
+			pst.setString(2, info3);
+			break;
+		case 4:
+			pst = (PreparedStatement) getCon().prepareStatement(sqlCpu);
+			pst.setString(1, info1);
+			break;
+		case 5:
+			pst = (PreparedStatement) getCon().prepareStatement(sqlScreenSize);
+			pst.setString(1, info1);
+			pst.setString(2, info3);
+			break;
 		}
 		
 		ResultSet rs = pst.executeQuery();
-		//System.out.println(rs.next());
 		while(rs.next()){
 			JSONObject jsonLan = new JSONObject();
 			jsonLan.put("phonename", rs.getString("phonename"));
@@ -118,6 +134,7 @@ public class PhoneInfoDAO {
 			jsonLan.put("price", rs.getInt("price"));
 			jsonArray.put(jsonLan);
 		}
+		System.out.println(jsonArray);
 		return jsonArray;
 	}
 }

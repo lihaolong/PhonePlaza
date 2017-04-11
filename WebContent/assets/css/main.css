@@ -63,6 +63,7 @@
 }
  a{
  	text-decoration: none;
+ 	cursor: pointer;
  }
 .hotvideo{
 	height: 520.8px;
