@@ -1,20 +1,20 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>手机信息</title>
-<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="assets/js/phoneinfo.js"></script>
 <link rel="SHORTCUT ICON"
 	href="http://localhost:8080/PhonePlaza/assets/img/logo2.ico" />
 <link rel="css normalize"
 	href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" />
-<link rel="stylesheet" href="assets/css/phoneinfo.css" />
 <link rel="stylesheet" href="assets/css/header.css" />
-<link rel="stylesheet" href="assets/css/hotnews.css">
+<link rel="stylesheet" href="assets/css/phonecompare.css" />
+<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="assets/js/phonecompare.js"></script>
+<script type="text/javascript" src="assets/js/msgtrans.js"></script>
+<title>手机对比</title>
 </head>
 <body>
-	<div class="header">
+<div class="header">
 		<ul class="inner_header1">
 			<li><img src="assets/img/logo2.png" alt="logo" /></li>
 			<li class="logo"><a
@@ -30,7 +30,7 @@
 		<div class="inner_search">
 			<input type="text" placeholder="搜索手机或专题" /> <span class="search_btn"
 				style="background-image: url(assets/img/search_btn.png)"
-				></span>
+				onclick="index.html"></span>
 		</div>
 		<div class="login">
 			<a class="inner_login" href="index.html">登录</a> <a
@@ -38,24 +38,24 @@
 		</div>
 	</div>
 	<div class="content">
-		<div class="phoneinfo">
-			<div class="phone-pic">
-			<div class="phone-picsrc">
-			<img id="phoneimg" alt="phonename">
-			</div>
-			<div class="buy-heart">
-			<a class="buy-heart-a" href=""><img class="buy-img" src="assets/img/buy.png"></img>
-			</a>
-			<span class="buy-heart-num">购买</span>
-			</div>
-			<div class="like-heart">
-			<a class="like-heart-a" href=""><img class="heart-img" src="assets/img/heart.png"></img>
-			</a>
-			<span class="like-heart-num">喜欢</span>
-			</div>
-			</div>
-			<div class="phone-other">
-				<div class="title">
+	<div class="phone-pic">
+	<div class="phone1">
+	<ul>
+	<li><span class="phone1-title" id="phonenamespan1">mate9</span></li>
+	<li><img alt="phoneimg" src=""  id="phoneimg1"></li>
+	<li><span class="phone1=price" style="color: red" id="pricespan1">1999</span></li>
+	</ul>
+	</div>
+	<div class="phone2">
+	<ul>
+	<li><span class="phone1-title" id="phonenamespan2">mate9</span></li>
+	<li><img alt="phoneimg" src=""  id="phoneimg2"></li>
+	<li><span class="phone1=price" style="color: red" id="pricespan2">1999</span></li>
+	</ul>
+	</div>
+	</div>
+	<div class="comparelist">
+	<div class="title">
 					<p class="title-info">配置参数</p>
 					<div class="line-short"></div>
 				</div>
@@ -63,191 +63,156 @@
 					<h3>上市时间</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="selltime">2016-11-11</p>
+						<p class="selltime-p" id="selltime1">2016-11-11</p>
+						<p class="selltime-p" id="selltime2">2016-12-12</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>重量</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="weight">150g</p>
+						<p class="selltime-p" id="weight1">150g</p>
+						<p class="selltime-p" id="weight2">150g</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>厚度</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="thickness">7.5mm</p>
+						<p class="selltime-p" id="thickness1">7.5mm</p>
+						<p class="selltime-p" id="thickness2">7.5mm</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>ram</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="ram">2GB</p>
+						<p class="selltime-p" id="ram1">2GB</p>
+						<p class="selltime-p" id="ram2">2GB</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>rom</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="rom">32GB</p>
+						<p class="selltime-p" id="rom1">32GB</p>
+						<p class="selltime-p" id="rom2">32GB</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>价格</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="price">3199</p>
+						<p class="selltime-p" id="price1">3199</p>
+						<p class="selltime-p" id="price2">3199</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>屏幕-尺寸</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="screensize">5.5寸</p>
+						<p class="selltime-p" id="screensize1">5.5寸</p>
+						<p class="selltime-p" id="screensize2">5.5寸</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>屏幕-材质</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="screenmaterial">LCD</p>
+						<p class="selltime-p" id="screenmaterial1">LCD</p>
+						<p class="selltime-p" id="screenmaterial2">LCD</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>屏幕-像素</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="screenpx">1920*1080</p>
+						<p class="selltime-p" id="screenpx1">1920*1080</p>
+						<p class="selltime-p" id="screenpx2">1920*1080</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-品牌</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cpubrand">高通</p>
+						<p class="selltime-p" id="cpubrand1">高通</p>
+						<p class="selltime-p" id="cpubrand2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-型号</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuname">高通</p>
+						<p class="selltime-p" id="cpuname1">高通</p>
+						<p class="selltime-p" id="cpuname2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-核芯</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cpucorenum">高通</p>
+						<p class="selltime-p" id="cpucorenum1">高通</p>
+						<p class="selltime-p" id="cpucorenum2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-频率</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuhz">高通</p>
+						<p class="selltime-p" id="cpuhz1">高通</p>
+						<p class="selltime-p" id="cpuhz2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-GPU</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="gpu">高通</p>
+						<p class="selltime-p" id="gpu1">高通</p>
+						<p class="selltime-p" id="gpu2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>CPU-制程</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuprocess">高通</p>
+						<p class="selltime-p" id="cpuprocess1">高通</p>
+						<p class="selltime-p" id="cpuprocess2">高通</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>相机-型号</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="cameraname">3199</p>
+						<p class="selltime-p" id="cameraname1">3199</p>
+						<p class="selltime-p" id="cameraname2">3199</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>相机-像素</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="camerapx">3199</p>
+						<p class="selltime-p" id="camerapx1">3199</p>
+						<p class="selltime-p" id="camerapx2">3199</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>相机-光圈</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="sperture">3199</p>
+						<p class="selltime-p" id="sperture1">3199</p>
+						<p class="selltime-p" id="sperture2">3199</p>
 					</div>
 				</div>
 				<div class="selltime">
 					<h3>相机-光学防抖</h3>
 					<div class="selltime-inner">
 						<div class="line-long"></div>
-						<p class="selltime-p" id="supportois">3199</p>
+						<p class="selltime-p" id="supportois1">3199</p>
+						<p class="selltime-p" id="supportois2">3199</p>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="hotnews" style="height: 600px">
-		<div class="hotnews01" style="background-color: #fff">
-			<p class="pic01">
-				<a href="index.html"><img alt="zol01"
-					src="assets/img/hotnews/zol01.jpg"></a>
-			</p>
-			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
-			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
-				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
-			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
-					id="news01">1</span>）
-				</span>
 			</div>
-		</div>
-		<div class="hotnews01" style="background-color: #fff">
-			<p class="pic01">
-				<a href="index.html"><img alt="zol01"
-					src="assets/img/hotnews/zol01.jpg"></a>
-			</p>
-			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
-			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
-				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
-			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
-					id="news01">1</span>）
-				</span>
-			</div>
-		</div>
-		<div class="hotnews01" style="background-color: #fff">
-			<p class="pic01">
-				<a href="index.html"><img alt="zol01"
-					src="assets/img/hotnews/zol01.jpg"></a>
-			</p>
-			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
-			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
-				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
-			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
-					id="news01">1</span>）
-				</span>
-			</div>
-		</div>
-		</div>
-	</div>
 	<div class="footer">
 		<div class="footer-text">
 			© PhonePlaza 版权所有<br /> 选手机，上PhonePlaza!

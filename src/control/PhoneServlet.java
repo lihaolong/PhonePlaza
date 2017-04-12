@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,37 +31,59 @@ public class PhoneServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String phoneName = request.getParameter("phoneName");
+		String phoneNameother = request.getParameter("phoneNameother");
 
 		PhoneInfoDAO phoneInfoDAO = new PhoneInfoDAO();
 		PhoneInfo phoneInfo = new PhoneInfo();
 		CpuInfo cpuInfo = new CpuInfo();
 		CameraInfo cameraInfo = new CameraInfo();
-		JSONObject phoneJson = new JSONObject();
 
+		PhoneInfo otherphoneInfo = new PhoneInfo();
+		CpuInfo othercpuInfo = new CpuInfo();
+		CameraInfo othercameraInfo = new CameraInfo();
+		JSONObject phoneJson = new JSONObject();
+		JSONObject otherphoneJson = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
 		try {
 			phoneInfo = phoneInfoDAO.query(phoneName);
 			cpuInfo = phoneInfoDAO.queryCpu(phoneName);
 			cameraInfo = phoneInfoDAO.queryCamera(phoneName);
 			phoneJson = creatJson(phoneInfo,cpuInfo,cameraInfo);
+			jsonArray.put(phoneJson);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
 		System.out.println(phoneName);
-		System.out.println(cpuInfo.getCpuBrand());
-		System.out.println(cameraInfo.getCameraName());
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
+		System.out.println(phoneNameother);
+		System.out.println(phoneJson);
+		if(phoneNameother==null){
 		out.write(phoneJson.toString());
+		}else{
+			try {
+				otherphoneInfo = phoneInfoDAO.query(phoneNameother);
+				othercpuInfo = phoneInfoDAO.queryCpu(phoneNameother);
+				othercameraInfo = phoneInfoDAO.queryCamera(phoneNameother);
+				otherphoneJson = creatJson(otherphoneInfo,othercpuInfo,othercameraInfo);
+				jsonArray.put(otherphoneJson);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			out.write(jsonArray.toString());
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+//根据Javabean创建json对象
 	public JSONObject creatJson(PhoneInfo phoneInfo,CpuInfo cpuInfo,CameraInfo cameraInfo) throws JSONException {
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("phonename", phoneInfo.getPhoneName());

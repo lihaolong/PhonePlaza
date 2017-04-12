@@ -1,9 +1,10 @@
+//文档加载后向servlet发送获得所有phonename，selltime，price的请求
 window.onload = function() {
 	sendQueryInfo("all", 2);
 	var compborder = document.getElementById("compare-frame");
 	compborder.style.border = "none";
 }
-
+//发送获得phonename，selltime，price的请求到servlet
 function sendQueryInfo(info1, info2, info3) {
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.open("Get", "/PhonePlaza/control/PhoneQueryServlet?info1=" + info1
@@ -19,7 +20,7 @@ function sendQueryInfo(info1, info2, info3) {
 	}
 }
 
-
+//创建侧边手机对比框
 function creatFrame(phonename) {
 	alert(phonename);
 	var ul1 = document.getElementById("compare-ul");
@@ -31,7 +32,6 @@ function creatFrame(phonename) {
 		ul1.appendChild(pic1);
 		pic1.setAttribute("phonename", phonename);
 	}
-	alert(ul1.childNodes.length);
 if (ul1.childNodes.length == 3) {
 	var span = document.createElement("span");
 	span.innerHTML = "对比";
@@ -43,12 +43,26 @@ if (ul1.childNodes.length == 3) {
 	})();
 }
 }
+//跳转到手机对比页
 function jumptocomp() {
 	var ul = document.getElementById("compare-ul");
-	alert(ul.childNodes[2].getAttribute("phonename"));
+	var phonename = ul.childNodes[1].getAttribute("phonename");
+	var phonenameother = ul.childNodes[2].getAttribute("phonename");
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("Get", "/PhonePlaza/control/PhoneServlet?phoneName=" + phonename
+			+ "&phoneNameother=" + phonenameother, true);
+	xmlHttp.send();
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			var msg = xmlHttp.responseText;
+			alert(msg);
+			window.sessionStorage.setItem("compareinfo", msg);
+			window.open("phonecompare.html");
+		}
+	}
 }
 
-
+//循环创建手机显示的li和img标签
 var creatLi = function(json) {
 	jsonp = JSON.parse(json);
 	var ul = document.getElementById("phone-ul");
@@ -95,12 +109,12 @@ var creatLi = function(json) {
 		})(p2);
 		!(function(p2, jsonitem) {
 			p2.addEventListener("click", function() {
-				alert("span click");
 				creatFrame(jsonitem);
 			}, false)
 		})(p2, jsonitem);
 	}
 }
+//根据price排序
 function sortByprice() {
 	var ul = document.getElementById("phone-ul");
 	alert(ul.childNodes[1].getAttribute("price"));
@@ -117,7 +131,7 @@ function sortByprice() {
 		ul.appendChild(arr[i]);
 	}
 }
-
+//根据selltime排序
 function sortByselltime() {
 	var ul = document.getElementById("phone-ul");
 	alert(ul.childNodes[1].getAttribute("selltime"));
