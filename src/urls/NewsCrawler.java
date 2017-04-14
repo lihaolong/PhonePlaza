@@ -1,6 +1,7 @@
 package urls;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,12 +10,6 @@ import DAO.urlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
-
-/**
- * Crawling news from hfut news
- *
- * @author hu
- */
 public class NewsCrawler extends BreadthCrawler {
 
 	/**
@@ -25,17 +20,19 @@ public class NewsCrawler extends BreadthCrawler {
 	 *            if autoParse is true,BreadthCrawler will auto extract links
 	 *            which match regex rules from pag
 	 */
+	private urlDAO urlDao = new urlDAO();
+	Timestamp timeMax = null;
 	public NewsCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
-		/* start page */
 		this.addSeed("http://mobile.pconline.com.cn/review/");
-
-		/* fetch url like http://news.hfut.edu.cn/show-xxxxxxhtml */
 		this.addRegex("+http://mobile.pconline.com.cn/*.*html");
-		/* do not fetch jpg|png|gif */
 		this.addRegex("-.*\\.(jpg|png|gif).*");
-		/* do not fetch url contains # */
 		this.addRegex("-.*review.*");
+		try{
+			timeMax = urlDao.queryMaxTime();}
+			catch (SQLException e) {
+				e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -60,15 +57,16 @@ public class NewsCrawler extends BreadthCrawler {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date date;
-			urlDAO urlDao = new urlDAO();
 			try {
 				date = sdf.parse(times);
+				Timestamp sqldate = new Timestamp(date.getTime());
+				if(sqldate.after(timeMax)){
 				urlDao.insertURL(page.url(), title, para, date);
 				System.out.println("date:\n" + date);
+				}
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-
 			catch (SQLException e) {
 				e.printStackTrace();
 			}

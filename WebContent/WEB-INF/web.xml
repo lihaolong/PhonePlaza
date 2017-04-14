@@ -17,12 +17,20 @@
     <servlet-name>PhoneServlet</servlet-name>
     <url-pattern>/control/PhoneServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
-  <servlet-name>PhoneQueryServlet</servlet-name>
-  <servlet-class>control.PhoneQueryServlet</servlet-class>
+  <servlet>
+    <servlet-name>PhoneQueryServlet</servlet-name>
+    <servlet-class>control.PhoneQueryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>PhoneQueryServlet</servlet-name>
-  <url-pattern>/control/PhoneQueryServlet</url-pattern>
+    <servlet-name>PhoneQueryServlet</servlet-name>
+    <url-pattern>/control/PhoneQueryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>URLServlet</servlet-name>
+  <servlet-class>control.URLServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>URLServlet</servlet-name>
+  <url-pattern>/control/URLServlet</url-pattern>
   </servlet-mapping>
 </web-app>

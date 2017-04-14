@@ -1,6 +1,16 @@
 jQuery(document)
 		.ready(
 				function() {
+					var xmlHttp = new XMLHttpRequest();
+					xmlHttp.open("get", "/PhonePlaza/control/URLServlet", true)
+					xmlHttp.send();
+					xmlHttp.onreadystatechange = function(){
+					if(xmlHttp.readyState==4&&xmlHttp.status==200){
+						var msg = xmlHttp.responseText;
+						alert(msg);
+						updateURL(msg);
+					}
+					}
 					$('.slider')
 							.each(
 									function() {
@@ -87,6 +97,22 @@ jQuery(document)
 										advance();// 循环播放图片
 									});
 				})
+				
+//更新热门评测
+function updateURL(msg){
+	jsonp = JSON.parse(msg);
+	var i = 0;
+	for(var url in jsonp){
+		i++;
+		var title = document.getElementById("title"+i);
+		var time = document.getElementById("time"+i);
+		var para = document.getElementById("para"+i);
+		title.innerHTML = jsonp[url].title;
+		title.href = jsonp[url].url;
+		time.innerHTML = jsonp[url].time;
+		para.innerHTML = jsonp[url].para;
+	}
+}
 // 点击阅读数增加
 function news01() {
 	var x = document.getElementById("news01").innerHTML;
