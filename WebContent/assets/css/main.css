@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
-
+body{
+	background-color: rgba(0,0,0,0.05);
+}
 .slider {
 	position: relative;
 	width: 100%;
@@ -53,12 +55,13 @@
  }
  .hotphone ul{
  	margin: 0 auto;
- 	width: 80%;
+ 	width: 1500px;
  	height: 100%;
 }
 .hotphone ul li{
 	float: left;
-	margin: 10px;
+	margin-left: 80px;
+	margin-top:20px;
 	list-style: none;
 }
  a{
@@ -72,7 +75,7 @@
 .hotvideo ul{
 	height: 500px;
 	width: auto;
-	margin: 0 200px 0 180px;
+	margin: 0 200px 0 200px;
 	background-color: gray;
 	position: relative;
 	padding: 0;
