@@ -26,11 +26,19 @@
     <url-pattern>/control/PhoneQueryServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-  <servlet-name>URLServlet</servlet-name>
-  <servlet-class>control.URLServlet</servlet-class>
+    <servlet-name>URLServlet</servlet-name>
+    <servlet-class>control.URLServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>URLServlet</servlet-name>
-  <url-pattern>/control/URLServlet</url-pattern>
+    <servlet-name>URLServlet</servlet-name>
+    <url-pattern>/control/URLServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>control.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/control/LoginServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,0 +1,88 @@
+body {
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content {
+	margin: 0 auto;
+	height: 750px;
+	width: 1200px;
+	background-color: #fff;
+}
+
+.content .pic {
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+.content .pic .login-img {
+	float: left;
+	height: 750px;
+	width: 350px;
+	height: 750px;
+}
+
+.content .login {
+	height: 100%;
+	width: 50%;
+	float: left;
+	position: relative;
+	text-align: center;
+}
+
+.content .login .h1 {
+	position: absolute;
+	top: 80px;
+	left: 78px;
+}
+
+.content .login .username {
+	position: absolute;
+	top: 250px;
+	left: 50px;
+	height: 30px;
+	width: 300px;
+}
+
+.content .login .password {
+	position: absolute;
+	top: 300px;
+	left: 50px;
+	height: 30px;
+	width: 300px;
+}
+
+.content .login .submit {
+	position: absolute;
+	top: 350px;
+	left: 50px;
+	height: 40px;
+	width: 305px;
+	background-color: #000;
+	color: #fff;
+}
+
+.content .login #username-warning{
+	color: red;
+	position: absolute;
+	top: 260px;
+	left: 360px;
+}
+.content .login #pass-warning{
+	color: red;
+	position: absolute;
+	top: 310px;
+	left: 360px;
+}
+.content .login .reg{
+	position: absolute;
+	top: 400px;
+	left: 210px;
+}
+.footer {
+	background-color: #000;
+	height: 100px;
+	color: white;
+	text-align: center;
+}

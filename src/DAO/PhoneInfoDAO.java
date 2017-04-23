@@ -1,7 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.json.JSONArray;
@@ -15,29 +13,15 @@ import model.CpuInfo;
 import model.PhoneInfo;
 
 public class PhoneInfoDAO {
-
-	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/phoneplaza";
 	private static String sqlByphonebrand = "select phonename,selltime,price from phoneinfo where phonebrand = ?";
 	private static String sqlAll = "select phonename,selltime,price from phoneinfo";
 	private static String sqlPrice = "select phonename,selltime,price from phoneinfo where price>=? and price<=?";
 	private static String sqlCpu = "select phonename,price,selltime from phoneinfo where phonename in (select phonename from phonecpucamera where cpuinfo in (select cpuname from cpuinfo where cpubrand = ?))";
 	private static String sqlScreenSize = "select phonename,selltime,price from phoneinfo where screensize>=? and screensize<=?";
 
-	private static Connection getCon() {
-		Connection con = null;
-		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, "root", "123456");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		return con;
-	}
-
 	public PhoneInfo query(String phoneName) throws SQLException {
 		PhoneInfo phoneInfo = new PhoneInfo();
-		PreparedStatement pst = (PreparedStatement) getCon()
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon()
 				.prepareStatement("select * from phoneinfo where phonename = ?");
 		pst.setString(1, phoneName);
 		ResultSet rs = pst.executeQuery();
@@ -63,7 +47,7 @@ public class PhoneInfoDAO {
 
 	public CpuInfo queryCpu(String phoneName) throws SQLException {
 		CpuInfo cpuInfo = new CpuInfo();
-		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(
 				"select * from cpuinfo where cpuinfo.cpuname in (select cpuinfo from phonecpucamera where phonename = ?)");
 		pst.setString(1, phoneName);
 		ResultSet rs = pst.executeQuery();
@@ -81,7 +65,7 @@ public class PhoneInfoDAO {
 
 	public CameraInfo queryCamera(String phoneName) throws SQLException {
 		CameraInfo cameraInfo = new CameraInfo();
-		PreparedStatement pst = (PreparedStatement) getCon().prepareStatement(
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(
 				"select * from  camerainfo where camerainfo.cameraname in (select camerainfo from phonecpucamera where phonename = ?)");
 		pst.setString(1, phoneName);
 		ResultSet rs = pst.executeQuery();
@@ -101,23 +85,23 @@ public class PhoneInfoDAO {
 		int tagi = Integer.parseInt(info2);
 		switch (tagi) {
 		case 1:
-			pst = (PreparedStatement) getCon().prepareStatement(sqlByphonebrand);
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlByphonebrand);
 			pst.setString(1, info1);
 			break;
 		case 2:
-			pst = (PreparedStatement) getCon().prepareStatement(sqlAll);
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlAll);
 			break;
 		case 3:
-			pst = (PreparedStatement) getCon().prepareStatement(sqlPrice);
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlPrice);
 			pst.setString(1, info1);
 			pst.setString(2, info3);
 			break;
 		case 4:
-			pst = (PreparedStatement) getCon().prepareStatement(sqlCpu);
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlCpu);
 			pst.setString(1, info1);
 			break;
 		case 5:
-			pst = (PreparedStatement) getCon().prepareStatement(sqlScreenSize);
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlScreenSize);
 			pst.setString(1, info1);
 			pst.setString(2, info3);
 			break;
