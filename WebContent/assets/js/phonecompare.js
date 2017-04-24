@@ -1,5 +1,6 @@
 //页面加载完成后执行
 window.onload = function() {
+	isLogin();
 	var compareinfo = window.sessionStorage.getItem("compareinfo");
 	alert(compareinfo);
 	var jsonp = JSON.parse(compareinfo);

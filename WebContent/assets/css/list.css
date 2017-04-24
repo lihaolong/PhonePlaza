@@ -85,6 +85,12 @@ li{
 	font-size: 16px;
 	font-weight: 800;
 }
+.content-phone a{
+	margin-left: 25px;
+	float: left;
+	font-size: 16px;
+	font-weight: 800;
+}
 .content-phone ul li img{
 	height: 180px;
 	width: 130px;

@@ -3,6 +3,7 @@ window.onload = function() {
 	sendQueryInfo("all", 2);
 	var compborder = document.getElementById("compare-frame");
 	compborder.style.border = "none";
+	isLogin();
 }
 //发送获得phonename，selltime，price的请求到servlet
 function sendQueryInfo(info1, info2, info3) {
@@ -76,16 +77,22 @@ var creatLi = function(json) {
 		var li1 = document.createElement("li");
 		var img1 = document.createElement("img");
 		var p1 = document.createElement("span");
-		var p2 = document.createElement("span");
+		var p2 = document.createElement("a");
+		var p3 = document.createElement("a");
 		ul.appendChild(li1);
 		li1.appendChild(img1);
 		li1.appendChild(p1);
 		li1.appendChild(p2);
+		li1.appendChild(p3);
 		p1.innerHTML = jsonp[phonename].phonename;
 		p2.style.height = "20px";
 		p2.style.color = "blue";
 		p2.style.display = "none";
 		p2.innerHTML = "加入对比";
+		p3.style.height = "20px";
+		p3.style.color = "blue";
+		p3.style.display = "none";
+		p3.innerHTML = "添加收藏";
 		img1.setAttribute("src", "assets/img/phonelist/" + jsonitem + ".jpg");
 		li1.setAttribute("id", jsonitem);
 		li1.setAttribute("phonename", jsonitem);
@@ -97,23 +104,54 @@ var creatLi = function(json) {
 				return sendId(jsonitem);
 			}, false)
 		})(jsonitem);
-		!(function(p2) {
+		!(function(p2,p3) {
 			li1.addEventListener("mouseover", function() {
 				p2.style.display = "block";
+				p3.style.display = "block";
 			}, false)
-		})(p2);
-		!(function(p2) {
+		})(p2,p3);
+		!(function(p2,p3) {
 			li1.addEventListener("mouseleave", function() {
 				p2.style.display = "none";
+				p3.style.display = "none";
 			}, false)
-		})(p2);
+		})(p2,p3);
 		!(function(p2, jsonitem) {
 			p2.addEventListener("click", function() {
 				creatFrame(jsonitem);
 			}, false)
 		})(p2, jsonitem);
+		!(function(p3, jsonitem) {
+			p3.addEventListener("click", function() {
+				sendUserPhone(jsonitem);
+			}, false)
+		})(p3, jsonitem);
 	}
 }
+//发送用户收藏手机信息
+function sendUserPhone(phonename){
+	var username;
+	if(window.sessionStorage.getItem("username")){
+		username=window.sessionStorage.getItem("username");
+		$.ajax({
+			url:"/PhonePlaza/control/UserPhoneServlet",
+			data:{"username":username,"phonename":phonename},
+			type:"post",
+			async:true,
+			success:function(data){
+				var msg = JSON.parse(data);
+				if(msg.isexit){
+					alert("此手机已经在您的收藏列表")
+				}if(!msg.isexit){
+					alert("收藏成功");
+				}
+			}
+		})
+	}else{
+		alert("请您先登录");
+	}
+}
+
 //根据price排序
 function sortByprice() {
 	var ul = document.getElementById("phone-ul");

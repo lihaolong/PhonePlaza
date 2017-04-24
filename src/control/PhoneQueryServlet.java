@@ -21,6 +21,7 @@ public class PhoneQueryServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//根据参数获得对应的手机信息
 		request.setCharacterEncoding("utf-8");
 		String info1 = request.getParameter("info1");
 		String info2 = request.getParameter("info2");

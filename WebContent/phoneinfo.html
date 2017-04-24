@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/css/phoneinfo.css" />
 <link rel="stylesheet" href="assets/css/header.css" />
 <link rel="stylesheet" href="assets/css/hotnews.css">
+<script type="text/javascript" src="assets/js/menu.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -32,9 +33,15 @@
 				style="background-image: url(assets/img/search_btn.png)"
 				></span>
 		</div>
-		<div class="login">
+		<div class="login" id="login">
 			<a class="inner_login" href="index.html">登录</a> <a
 				class="inner_logout" href="index.html">注册</a>
+		</div>
+			<div class="menu" id="menu">
+		<img alt="user" src="assets/img/user.png">
+		<a id="username">username</a>
+			<a href="login.html">更新</a><a href="login.html">收藏</a><a
+				onclick="exit();">退出</a>
 		</div>
 	</div>
 	<div class="content">

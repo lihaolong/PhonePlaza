@@ -12,6 +12,7 @@
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>
 <script type="text/javascript" src="assets/js/msgtrans.js"></script>
+<script type="text/javascript" src="assets/js/menu.js"></script>
 <title>首页</title>
 </head>
 <body>
@@ -30,12 +31,17 @@
 		</ul>
 		<div class="inner_search">
 			<input type="text" placeholder="搜索手机或专题" /> <span class="search_btn"
-				style="background-image: url(assets/img/search_btn.png)"
-				></span>
+				style="background-image: url(assets/img/search_btn.png)"></span>
 		</div>
-		<div class="login">
-			<a class="inner_login" href="index.html">登录</a> <a
-				class="inner_logout" href="index.html">注册</a>
+		<div class="login" id="login">
+			<a class="inner_login" href="login.html">登录</a> <a
+				class="inner_logout" href="reg.html">注册</a>
+		</div>
+		<div class="menu" id="menu">
+		<img alt="user" src="assets/img/user.png">
+		<a id="username">username</a>
+			<a href="login.html">更新</a><a href="login.html">收藏</a><a
+				onclick="exit();">退出</a>
 		</div>
 	</div>
 	<div class="slider">
@@ -72,14 +78,14 @@
 			<li><a id="mate9" onclick="sendId(this.id);"> <img
 					alt="mate9" src="assets/img/phoneimg/mate9.jpg" />
 			</a></li>
-			<li><a id="iphone7" onclick="sendId(this.id);"> <img alt="iphone7"
-					src="assets/img/phoneimg/iphone7.jpg" />
+			<li><a id="iphone7" onclick="sendId(this.id);"> <img
+					alt="iphone7" src="assets/img/phoneimg/iphone7.jpg" />
 			</a></li>
 			<li><a id="mix" onclick="sendId(this.id);"> <img alt="mix"
 					src="assets/img/phoneimg/mix.jpg" />
 			</a></li>
-			<li><a id="iphone7p" onclick="sendId(this.id);"> <img alt="iphone7p"
-					src="assets/img/phoneimg/iphone7p.jpg" />
+			<li><a id="iphone7p" onclick="sendId(this.id);"> <img
+					alt="iphone7p" src="assets/img/phoneimg/iphone7p.jpg" />
 			</a></li>
 		</ul>
 	</div>
@@ -103,7 +109,7 @@
 			</a></li>
 		</ul>
 	</div>
-	<div class="hotnews" style="height:800px">
+	<div class="hotnews" style="height: 800px">
 		<div class="hotnews-title">
 			<a href="" style="font-size: 18px; margin-left: 160px">热门文章</a>
 		</div>
@@ -113,8 +119,9 @@
 					src="assets/img/hotnews/zol01.jpg"></a>
 			</p>
 			<h3>
-				<a id="title1" class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				<a id="title1" class="title01"
+					href="http://mobile.zol.com.cn/632/6325564.html" onclick="news01()"
+					target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 			</h3>
 			<p id="para1" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
 				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
@@ -130,8 +137,9 @@
 					src="assets/img/hotnews/zol01.jpg"></a>
 			</p>
 			<h3>
-				<a id="title2" class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news02()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				<a id="title2" class="title01"
+					href="http://mobile.zol.com.cn/632/6325564.html" onclick="news02()"
+					target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 			</h3>
 			<p id="para2" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
 				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
@@ -146,7 +154,8 @@
 						src="assets/img/hotnews/zol01.jpg"></a>
 				</p>
 				<h3>
-					<a id="title3" class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
+					<a id="title3" class="title01"
+						href="http://mobile.zol.com.cn/632/6325564.html"
 						onclick="news03()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 				</h3>
 				<p id="para3" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
@@ -163,7 +172,8 @@
 						src="assets/img/hotnews/zol01.jpg"></a>
 				</p>
 				<h3>
-					<a id="title4" class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
+					<a id="title4" class="title01"
+						href="http://mobile.zol.com.cn/632/6325564.html"
 						onclick="news04()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 				</h3>
 				<p id="para4" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI

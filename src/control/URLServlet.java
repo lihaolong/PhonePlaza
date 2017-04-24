@@ -20,6 +20,7 @@ public class URLServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//获得top4 URL信息
 		urlDAO urlDao = new urlDAO();
 		JSONArray jsonArray = new JSONArray();
 		

@@ -65,9 +65,23 @@
 .header .login .inner_logout {
 	color: white;
 }
-
+.header .menu{
+	float: right;
+	margin-top: 60px;
+	margin-right: 50px;
+}
+.header .menu a{
+	padding-right: 5px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.header .menu img{
+	display: inline-block;
+	vertical-align: bottom;
+}
 a{
  	text-decoration: none;
+ 	color: white;
  }
 
 .footer{

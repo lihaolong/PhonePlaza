@@ -11,6 +11,7 @@ jQuery(document)
 						updateURL(msg);
 					}
 					}
+					isLogin();
 					$('.slider')
 							.each(
 									function() {
@@ -98,6 +99,8 @@ jQuery(document)
 									});
 				})
 				
+
+				
 //更新热门评测
 function updateURL(msg){
 	jsonp = JSON.parse(msg);
@@ -113,6 +116,7 @@ function updateURL(msg){
 		para.innerHTML = jsonp[url].para;
 	}
 }
+
 // 点击阅读数增加
 function news01() {
 	var x = document.getElementById("news01").innerHTML;

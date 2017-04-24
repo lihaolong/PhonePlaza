@@ -41,4 +41,20 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/control/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DologinServlet</servlet-name>
+    <servlet-class>control.DologinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DologinServlet</servlet-name>
+    <url-pattern>/control/DologinServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>UserPhoneServlet</servlet-name>
+    <servlet-class>control.UserPhoneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserPhoneServlet</servlet-name>
+    <url-pattern>/control/UserPhoneServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

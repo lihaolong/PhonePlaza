@@ -21,13 +21,13 @@ public class LoginDAO {
 	}
 	
 	public List<UserInfo> queryUser(){
-		List<UserInfo> uList = new ArrayList<UserInfo>();
-		UserInfo userInfo = new UserInfo();
+		List<UserInfo> uList = new ArrayList<>();
 		PreparedStatement pst;
 		try {
 			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryUser);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
+				UserInfo userInfo = new UserInfo();
 				userInfo.setUserName(rs.getString("username"));
 				userInfo.setPassword(rs.getString("password"));
 				uList.add(userInfo);
@@ -35,7 +35,6 @@ public class LoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 		return uList;
 	}
 }

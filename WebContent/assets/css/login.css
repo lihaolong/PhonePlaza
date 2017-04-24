@@ -62,7 +62,12 @@ body {
 	background-color: #000;
 	color: #fff;
 }
-
+.content .login #login-warning{
+	color: red;
+	position: absolute;
+	top: 210px;
+	left: 50px;
+}
 .content .login #username-warning{
 	color: red;
 	position: absolute;

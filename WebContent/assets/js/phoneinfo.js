@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+	isLogin();
 	var json = window.sessionStorage.getItem("phoneinfo");
 	jsonp = JSON.parse(json);
 	document.getElementById("selltime").innerHTML = jsonp.selltime;

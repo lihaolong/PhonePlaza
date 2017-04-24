@@ -18,9 +18,12 @@
 </div>
 <div class="login">
 <h1 class="h1">PhonePlaza登录</h1>
-<input id="username" class="username" type="text" placeholder=" 用户名"><span id="username-warning">用户名超过20个字符</span>
-<input id="password" class="password" type="password" placeholder=" 密码"><span id="pass-warning">密码少于6个字符</span>
-<button class="submit" onclick="loginsure();">登录</button>
+<!-- <form action="DologinServlet" method="post"> -->
+<span id="login-warning">用户名或密码错误</span>
+<input id="username" class="username" name="username" type="text" placeholder=" 用户名"><span id="username-warning">用户名超过20个字符</span>
+<input id="password" class="password" name="password" type="password" placeholder=" 密码"><span id="pass-warning">密码少于6个字符</span>
+<button type="submit" class="submit" onclick="loginsure();">登录</button>
+<!-- </form> -->
 <span class="reg">没有账号，<a href="reg.html" target="blank">立即注册</a></span>
 </div>
 </div>

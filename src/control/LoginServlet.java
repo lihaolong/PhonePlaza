@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		System.out.println(username+password);
-		
+		//处理注册用户信息
 		LoginDAO logindao = new LoginDAO();
 		try {
 			logindao.insertUser(username, password);

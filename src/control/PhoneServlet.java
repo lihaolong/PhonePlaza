@@ -61,6 +61,7 @@ public class PhoneServlet extends HttpServlet {
 		System.out.println(phoneName);
 		System.out.println(phoneNameother);
 		System.out.println(phoneJson);
+		//判断请求一部手机信息或者两部手机信息
 		if(phoneNameother==null){
 		out.write(phoneJson.toString());
 		}else{
