@@ -18,7 +18,8 @@ public class PhoneInfoDAO {
 	private static String sqlPrice = "select phonename,selltime,price from phoneinfo where price>=? and price<=?";
 	private static String sqlCpu = "select phonename,price,selltime from phoneinfo where phonename in (select phonename from phonecpucamera where cpuinfo in (select cpuname from cpuinfo where cpubrand = ?))";
 	private static String sqlScreenSize = "select phonename,selltime,price from phoneinfo where screensize>=? and screensize<=?";
-
+	private static String sqlCollection = "SELECT p.phonename,p.selltime,p.price FROM phoneinfo p LEFT JOIN userphone u ON p.phonename = u.phonename WHERE u.username=?";
+	
 	public PhoneInfo query(String phoneName) throws SQLException {
 		PhoneInfo phoneInfo = new PhoneInfo();
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon()
@@ -82,6 +83,7 @@ public class PhoneInfoDAO {
 	public JSONArray querylist(String info1,String info2,String info3) throws SQLException, JSONException{
 		JSONArray jsonArray = new JSONArray();
 		PreparedStatement pst = null;
+		//根据标志位查询对应数据
 		int tagi = Integer.parseInt(info2);
 		switch (tagi) {
 		case 1:
@@ -104,6 +106,10 @@ public class PhoneInfoDAO {
 			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlScreenSize);
 			pst.setString(1, info1);
 			pst.setString(2, info3);
+			break;
+		case 6:
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlCollection);
+			pst.setString(1, info1);
 			break;
 		}
 		

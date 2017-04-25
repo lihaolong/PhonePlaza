@@ -10,7 +10,7 @@ import DAO.urlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
-public class NewsCrawler extends BreadthCrawler {
+public class PhoneCrawler extends BreadthCrawler {
 
 	/**
 	 * @param crawlPath
@@ -22,14 +22,15 @@ public class NewsCrawler extends BreadthCrawler {
 	 */
 	private urlDAO urlDao = new urlDAO();
 	Timestamp timeMax = null;
-	public NewsCrawler(String crawlPath, boolean autoParse) {
+	public PhoneCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
-		this.addSeed("http://mobile.pconline.com.cn/review/");
-		this.addRegex("+http://mobile.pconline.com.cn/*.*html");
+		this.addSeed("http://news.shouji.com/ceping/");
+		this.addRegex("+http://news.shouji.com/ceping/*.*html");
 		this.addRegex("-.*\\.(jpg|png|gif).*");
-		this.addRegex("-.*review.*");
-		try{
-			timeMax = urlDao.queryMaxTime();}
+		this.addRegex("-.*sub.*");
+		this.addRegex("-.*list.*");
+	try{
+			timeMax = urlDao.queryMaxTime("news.shouji.com");}
 			catch (SQLException e) {
 				e.printStackTrace();
 		}
@@ -38,30 +39,33 @@ public class NewsCrawler extends BreadthCrawler {
 	@Override
 	public void visit(Page page, CrawlDatums next) {
 		/* if page is news page */
-		if (page.matchUrl("http://mobile.pconline.com.cn/*.*html")) {
+		if (page.matchUrl("http://news.shouji.com/ceping/*5.*html")) {
 			/* we use jsoup to parse page */
 			// Document doc = page.doc();
 
 			/* extract title and content of news by css selector */
-			String title = page.select("*[class=art-hd]>h1", 0).text();
-			String time = page.select("[class=pubtime]").text();
-			String para = page.select("[class=content]>table>tbody>tr>td>p", 0).text();
+			String title = page.select("*[class=content]>h1").text();
+			String time = page.select("[class=pubdate]").text();
+			String para = page.select("[class=body fs14]>p").text();
+			String paras = para.substring(0, 200);
 			// String content = page.select("div#Jwrap>h1", 0).text();
 			String times = time+":00";
 			System.out.println("URL:\n" + page.url());
 			System.out.println("title:\n" + title);
 			System.out.println("time:\n" + times);
-			System.out.println("para:\n" + para);
+			System.out.println("para:\n" + paras);
 			
 
-
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’ HH:mm:ss");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date date;
 			try {
 				date = sdf.parse(times);
+				String datef = sdf1.format(date);
+				date = sdf1.parse(datef);
 				Timestamp sqldate = new Timestamp(date.getTime());
 				if(sqldate.after(timeMax)){
-				urlDao.insertURL(page.url(), title, para, date);
+				urlDao.insertURL(page.url(), title, paras, date);
 				System.out.println("date:\n" + date);
 				}
 			} catch (ParseException e1) {
@@ -86,7 +90,7 @@ public class NewsCrawler extends BreadthCrawler {
 	}
 
 	public static void main(String[] args) throws Exception {
-		NewsCrawler crawler = new NewsCrawler("crawl", true);
+		PhoneCrawler crawler = new PhoneCrawler("crawl", true);
 		crawler.setThreads(100);
 		crawler.setTopN(70);
 		// crawler.setResumable(true);

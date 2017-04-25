@@ -13,8 +13,8 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class urlDAO {
 	private static String insertSql = "insert into urlinfo(url,title,para,time) values (?,?,?,?)";
-	private static String queryMaxSql = "select max(time) from urlinfo";
 	private static String queryTop = "select * from urlinfo order by time desc limit 0,4";
+	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
 	
 	public void insertURL(String url,String title,String para,Date time) throws SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(insertSql);
@@ -27,12 +27,22 @@ public class urlDAO {
 		pst.execute();
 	}
 	
-	public Timestamp queryMaxTime() throws SQLException{
-		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryMaxSql);
+	public Timestamp queryMaxTime(String url) throws SQLException{
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(maxTime);
+	/*	switch (tag) {
+		case 1:
+			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryMaxSql);
+			break;
+
+		case 2:
+			
+			break;
+		}*/
+		pst.setString(1, url);
 		ResultSet rs = pst.executeQuery();
 		Timestamp timeMax = null;
 		while(rs.next()){
-		timeMax = rs.getTimestamp("max(time)");
+		timeMax = rs.getTimestamp("time");
 		}
 		if(timeMax==null){
 			timeMax = Timestamp.valueOf("2017-4-1 00:00:00");

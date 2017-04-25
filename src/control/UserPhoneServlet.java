@@ -39,15 +39,18 @@ public class UserPhoneServlet extends HttpServlet {
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+		    	response.setCharacterEncoding("utf-8");
 		    	response.getWriter().write(json.toString());
 		    }
 		    else{
 		    	JSONObject json = new JSONObject();
 		    	try {
 					json.put("isexit", true);
+					json.put("username", userName);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+		    	System.out.println(json.toString());
 		    	response.getWriter().write(json.toString());
 		    }
 	}
