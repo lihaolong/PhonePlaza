@@ -16,6 +16,7 @@ public class urlDAO {
 	private static String queryTop = "select * from urlinfo order by time desc limit 0,4";
 	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
 	
+	//插入url
 	public void insertURL(String url,String title,String para,Date time) throws SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(insertSql);
 		pst.setString(1, url);
@@ -26,7 +27,7 @@ public class urlDAO {
 		pst.setTimestamp(4, sqldate);
 		pst.execute();
 	}
-	
+	//查询最大时间
 	public Timestamp queryMaxTime(String url) throws SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(maxTime);
 	/*	switch (tag) {
@@ -49,7 +50,7 @@ public class urlDAO {
 		}
 		return timeMax;
 	}
-	
+	//查询最新URL信息
 	public JSONArray queryTop() throws JSONException, SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryTop);
 		ResultSet rs = pst.executeQuery();

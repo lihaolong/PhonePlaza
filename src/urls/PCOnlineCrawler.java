@@ -25,6 +25,7 @@ public class PCOnlineCrawler extends BreadthCrawler {
 	public PCOnlineCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
 		this.addSeed("http://mobile.pconline.com.cn/review/");
+		//this.addSeed("http://mobile.pconline.com.cn/review/index_1.html");
 		this.addRegex("+http://mobile.pconline.com.cn/*.*html");
 		this.addRegex("-.*\\.(jpg|png|gif).*");
 		this.addRegex("-.*review.*");
@@ -81,7 +82,7 @@ public class PCOnlineCrawler extends BreadthCrawler {
 			 * If autoParse is true and the link you add to nextLinks does not
 			 * match the regex rules,the link will also been filtered.
 			 */
-			// next.add("http://xxxxxx.com");
+			//next.add("http://mobile.pconline.com.cn/review/index_1.html");
 		}
 	}
 
