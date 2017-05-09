@@ -14,6 +14,7 @@ import com.mysql.jdbc.PreparedStatement;
 public class urlDAO {
 	private static String insertSql = "insert into urlinfo(url,title,para,time) values (?,?,?,?)";
 	private static String queryTop = "select * from urlinfo order by time desc limit 0,4";
+	//根据网站查询最大时间
 	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
 	
 	//插入url
@@ -30,15 +31,6 @@ public class urlDAO {
 	//查询最大时间
 	public Timestamp queryMaxTime(String url) throws SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(maxTime);
-	/*	switch (tag) {
-		case 1:
-			pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryMaxSql);
-			break;
-
-		case 2:
-			
-			break;
-		}*/
 		pst.setString(1, url);
 		ResultSet rs = pst.executeQuery();
 		Timestamp timeMax = null;

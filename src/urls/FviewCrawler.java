@@ -6,54 +6,50 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import DAO.urlDAO;
+import DAO.FviewUrlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 
-public class CnmoCrawler extends BreadthCrawler {
-	private urlDAO urlDao = new urlDAO();
+public class FviewCrawler extends BreadthCrawler {
+	private FviewUrlDAO urlDao = new FviewUrlDAO();
 	Timestamp timeMax = null;
 
-	public CnmoCrawler(String crawlPath, boolean autoParse) {
+	public FviewCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
-		this.addSeed("http://www.cnmo.com/reviews/");
-		this.addRegex("+http://www.cnmo.com/reviews/*.*html");
-		this.addRegex("-.*\\.(jpg|png|gif).*");
-		this.addRegex("-.*list.*");
-		this.addRegex("-.*all.*");
-		this.addRegex("-.*system.*");
+		this.addSeed("http://v.qq.com/vplus/fview/videos");
+		this.addRegex("+http://v.qq.com/page/*.*html");
 		try {
-			timeMax = urlDao.queryMaxTime("www.cnmo.com");
+			timeMax = urlDao.queryMax();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
 	public void visit(Page page, CrawlDatums next) {
 		/* if page is news page */
-		if (page.matchUrl("http://www.cnmo.com/reviews/*.*html")) {
+		if (page.matchUrl("http://v.qq.com/page/*.*html")) {
 
 			/* extract title and content of news by css selector */
-			String title = page.select("*[class=ctitle]>h1", 0).text();
-			String time = page.select("*[class=text_auther]+span").text();
-			String para = page.select("*[class=ctext]>p", 0).text();
-			// String content = page.select("div#Jwrap>h1", 0).text();
-			String times = time + ":00";
+			String title = page.select("title").text();
+			String time = page.select("*[class=date]").text();
 			System.out.println("URL:\n" + page.url());
 			System.out.println("title:\n" + title);
-			System.out.println("time:\n" + times);
-			System.out.println("para:\n" + para);
 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String times = time.substring(0, 11);
+
+			System.out.println("time:\n" + times);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
 			Date date;
 			try {
 				date = sdf.parse(times);
 				Timestamp sqldate = new Timestamp(date.getTime());
 				if (sqldate.after(timeMax)) {
-					urlDao.insertURL(page.url(), title, para, date);
-					System.out.println("date:\n" + date);
+					urlDao.insert(page.url(), title, sqldate);
+					System.out.println("date:\n" + sqldate);
 				}
 			} catch (ParseException e1) {
 				e1.printStackTrace();
@@ -64,9 +60,9 @@ public class CnmoCrawler extends BreadthCrawler {
 	}
 
 	public static void main(String[] args) throws Exception {
-		CnmoCrawler crawler = new CnmoCrawler("crawl", true);
-		crawler.setThreads(100);
-		crawler.setTopN(70);
+		FviewCrawler crawler = new FviewCrawler("crawl", true);
+		crawler.setThreads(200);
+		crawler.setTopN(100);
 		// crawler.setResumable(true);
 		/* start crawl with depth of 4 */
 		crawler.start(2);

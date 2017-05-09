@@ -8,7 +8,7 @@ import model.UserInfo;
 public class DologinService {
 
 	LoginDAO logindao = new LoginDAO();
-	
+	//判断user是否存在数据库
 	public boolean isUser(String userName,String password){
 		List<UserInfo> uList = logindao.queryUser();
 		boolean isUser = false;

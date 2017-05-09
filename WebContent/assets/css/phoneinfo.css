@@ -14,7 +14,7 @@
 .content .phone-pic {
 	position: absolute;
 	top: 80px;
-	left: 210px;
+	left: 290px;
 	height: 800px;
 	width: 300px;
 	background-color: #fff;
@@ -23,7 +23,7 @@
 .content .phone-other {
 	position: absolute;
 	top: 80px;
-	right: 200px;
+	right: 280px;
 	height: 800px;
 	width: 800px;
 	background-color: #fff;

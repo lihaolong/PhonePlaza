@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import DAO.VideoUrlDAO;
-import DAO.urlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
@@ -45,6 +44,7 @@ public class DaMiCrawler extends BreadthCrawler {
 			String title = page.select("*[class=article_container row  box]>h1").text();
 			String time = page.select("[class=info_date info_ico]").text();
 			StringBuffer sbTime = new StringBuffer(time);
+			//插入年份，便于日期转化
 			if(Integer.parseInt(sbTime.substring(0, 2).toString())>10){
 			sbTime.insert(0, "2016-");
 			}else{

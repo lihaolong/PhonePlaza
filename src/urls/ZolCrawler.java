@@ -1,27 +1,17 @@
 package urls;
 
-/*import java.sql.SQLException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import DAO.urlDAO;*/
+import DAO.urlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 public class ZolCrawler extends BreadthCrawler {
-
-	/**
-	 * @param crawlPath
-	 *            crawlPath is the path of the directory which maintains
-	 *            information of this crawler
-	 * @param autoParse
-	 *            if autoParse is true,BreadthCrawler will auto extract links
-	 *            which match regex rules from pag
-	 */
-	//private urlDAO urlDao = new urlDAO();
-	//Timestamp timeMax = null;
+	private urlDAO urlDao = new urlDAO();
 	public ZolCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
 		this.addSeed("http://mobile.zol.com.cn/more/2_428.shtml");
@@ -29,11 +19,8 @@ public class ZolCrawler extends BreadthCrawler {
 		this.addRegex("-.*\\.(jpg|png|gif).*");
 		this.addRegex("-.*more.*");
 		this.addRegex("-.*_.*");
-		/*try{
-			timeMax = urlDao.queryMaxTime("mobile.pconline.com.cn");}
-			catch (SQLException e) {
-				e.printStackTrace();
-		}*/
+		this.addRegex("-.*iphone.*");
+		this.addRegex("-.*android.*");
 	}
 
 	@Override
@@ -47,44 +34,42 @@ public class ZolCrawler extends BreadthCrawler {
 			String title = page.select("*[class=article-header editor-hasPic clearfix]>h1").text();
 			String time = page.select("[id=pubtime_baidu]").text();
 			String para = page.select("[class=article-cont clearfix]>p").text();
-			// String content = page.select("div#Jwrap>h1", 0).text();
-			//String times = time+":00";
-			//String r = "?";
-			para = para.replace("?","");
+			//去除空格变成的问号
+			String paras = null;
+			try {
+		        paras = new String(para.getBytes(),"GBK").replace('?', ' ').replace('　', ' ');
+		} catch (Exception e){
+		        e.printStackTrace();
+		}
 			System.out.println("URL:\n" + page.url());
 			System.out.println("title:\n" + title);
 			System.out.println("time:\n" + time);
-			System.out.println("para:\n" + para);
-			
-
-
-			/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date date;
-			try {
-				date = sdf.parse(times);
-				Timestamp sqldate = new Timestamp(date.getTime());
-				if(sqldate.after(timeMax)){
-				urlDao.insertURL(page.url(), title, para, date);
-				System.out.println("date:\n" + date);
-				}
-			} catch (ParseException e1) {
-				e1.printStackTrace();
+			System.out.println("para:\n" + paras);
+			//防止字符串长度超过数据库字段最大长度
+			if(paras.length()<255){
+			paras = paras.substring(0, para.length());
+			}else{
+				paras = paras.substring(0,255);
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}*/
-			// System.out.println("content:\n" + content);
-
-			/* If you want to add urls to crawl,add them to nextLink */
-			/*
-			 * WebCollector automatically filters links that have been fetched
-			 * before
-			 */
-			/*
-			 * If autoParse is true and the link you add to nextLinks does not
-			 * match the regex rules,the link will also been filtered.
-			 */
-			// next.add("http://xxxxxx.com");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = null;
+				try {
+					//判断抓到的date是否为空
+					if(!time.equals("")){
+					date = sdf.parse(time);
+					Timestamp sqldate = new Timestamp(date.getTime());
+					//只有大于最大时间才插入数据库
+					if(sqldate.after(urlDao.queryMaxTime("mobile.zol.com.cn"))){
+					urlDao.insertURL(page.url(), title, paras, date);
+					}
+					}
+					System.out.println("date:\n" + date);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 

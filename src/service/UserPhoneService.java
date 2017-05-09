@@ -9,6 +9,7 @@ import model.UserPhone;
 public class UserPhoneService {
 	UserPhoneDAO userPhoneDAO = new UserPhoneDAO();
 	List<UserPhone> uList = userPhoneDAO.query();
+	//判断是否已经收藏
 	public boolean isExit(String userName,String phoneName){
 	boolean isExit = false;
 	for(UserPhone u : uList){
@@ -18,6 +19,7 @@ public class UserPhoneService {
 	}
 	return isExit;
 	}
+	//添加收藏信息
 	public void add(String userName,String phoneName) throws SQLException{
 		userPhoneDAO.insert(userName, phoneName);
 	}
