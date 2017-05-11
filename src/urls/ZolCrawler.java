@@ -6,12 +6,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import DAO.urlDAO;
+import DAO.UrlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 public class ZolCrawler extends BreadthCrawler {
-	private urlDAO urlDao = new urlDAO();
+	private UrlDAO urlDao = new UrlDAO();
 	public ZolCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);
 		this.addSeed("http://mobile.zol.com.cn/more/2_428.shtml");

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/header.css" />
 <link rel="stylesheet" href="assets/css/hotnews.css">
 <script type="text/javascript" src="assets/js/menu.js"></script>
+<script type="text/javascript" src="assets/js/updateurl.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -34,14 +35,19 @@
 				></span>
 		</div>
 		<div class="login" id="login">
-			<a class="inner_login" href="index.html">登录</a> <a
-				class="inner_logout" href="index.html">注册</a>
+			<ul>
+			<li><a class="inner_login" href="login.html">登录</a></li>
+			<li><a class="inner_logout" href="reg.html">注册</a></li>
+			</ul>
 		</div>
-			<div class="menu" id="menu">
-		<img alt="user" src="assets/img/user.png">
-		<a id="username">username</a>
-			<a href="login.html">更新</a><a href="collection.html" target="blank">收藏</a><a
-				onclick="exit();">退出</a>
+		<div class="menu" id="menu">
+		<ul>
+		<li><img alt="user" src="assets/img/user.png"></li>
+		<li><a id="username">username</a></li>
+		<li><a href="login.html">更新</a></li>
+		<li><a href="collection.html" target="blank">收藏</a></li>
+		<li><a onclick="exit();">退出</a></li>
+		</ul>
 		</div>
 	</div>
 	<div class="content">
@@ -202,57 +208,60 @@
 			</div>
 		</div>
 		<div class="hotnews" style="height: 600px">
-		<div class="hotnews01" style="background-color: #fff">
+		<div class="hotnews01">
 			<p class="pic01">
 				<a href="index.html"><img alt="zol01"
 					src="assets/img/hotnews/zol01.jpg"></a>
 			</p>
 			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				<a id="title1" class="title01"
+					href="http://mobile.zol.com.cn/632/6325564.html" onclick="news01()"
+					target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
+			<p id="para1" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
 				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
 			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
+				<span id="time1" class="time">2017年3月38日</span> <span class="count">阅读（<span
 					id="news01">1</span>）
 				</span>
 			</div>
 		</div>
-		<div class="hotnews01" style="background-color: #fff">
+		<div class="hotnews01">
 			<p class="pic01">
 				<a href="index.html"><img alt="zol01"
 					src="assets/img/hotnews/zol01.jpg"></a>
 			</p>
 			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				<a id="title2" class="title01"
+					href="http://mobile.zol.com.cn/632/6325564.html" onclick="news02()"
+					target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
 			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
+			<p id="para2" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
 				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
 			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
-					id="news01">1</span>）
+				<span id="time2" class="time">2017年3月38日</span> <span class="count">阅读（<span
+					id="news02">1</span>）
 				</span>
 			</div>
-		</div>
-		<div class="hotnews01" style="background-color: #fff">
-			<p class="pic01">
-				<a href="index.html"><img alt="zol01"
-					src="assets/img/hotnews/zol01.jpg"></a>
-			</p>
-			<h3>
-				<a class="title01" href="http://mobile.zol.com.cn/632/6325564.html"
-					onclick="news01()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
-			</h3>
-			<p class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
-				nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
-			<div>
-				<span class="time">2017年3月38日</span> <span class="count">阅读（<span
-					id="news01">1</span>）
-				</span>
 			</div>
-		</div>
+			<div class="hotnews01">
+				<p class="pic01">
+					<a href="index.html"><img alt="zol01"
+						src="assets/img/hotnews/zol01.jpg"></a>
+				</p>
+				<h3>
+					<a id="title3" class="title01"
+						href="http://mobile.zol.com.cn/632/6325564.html"
+						onclick="news03()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				</h3>
+				<p id="para3" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
+					nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
+				<div>
+					<span id="time3" class="time">2017年3月38日</span> <span class="count">阅读（<span
+						id="news03">1</span>）
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="footer">

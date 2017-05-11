@@ -12,27 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import DAO.UrlDAO;
-@WebServlet("/URLServlet")
-public class URLServlet extends HttpServlet {
+import DAO.FviewUrlDAO;
+import DAO.NaYanUrlDAO;
+import DAO.VideoUrlDAO;
+import DAO.ZealerUrlDAO;
+@WebServlet("/VideoServlet")
+public class VideoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public URLServlet() {
+    public VideoServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获得top4 URL信息
-		UrlDAO urlDao = new UrlDAO();
+		VideoUrlDAO videoUrlDAO = new VideoUrlDAO();
+		ZealerUrlDAO zealerUrlDAO = new ZealerUrlDAO();
+		NaYanUrlDAO nayanUrlDAO = new NaYanUrlDAO();
+		FviewUrlDAO fviewUrlDAO = new FviewUrlDAO();
 		JSONArray jsonArray = new JSONArray();
-		
 		try {
-			jsonArray = urlDao.queryTop();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+			
+			jsonArray.put(videoUrlDAO.queryNewDami());
+			jsonArray.put(zealerUrlDAO.queryNewZealer());
+			jsonArray.put(nayanUrlDAO.queryNewNayan());
+			jsonArray.put(fviewUrlDAO.queryNewFview());
+		} catch (SQLException | JSONException e) {
 			e.printStackTrace();
 		}
-		//System.out.println(jsonArray.toString());
 		response.setCharacterEncoding("utf-8");
+		System.out.println(jsonArray.toString());
 		response.getWriter().write(jsonArray.toString());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

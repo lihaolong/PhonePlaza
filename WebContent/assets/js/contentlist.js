@@ -1,4 +1,5 @@
 //发送获得phonename，selltime，price的请求到servlet
+//info2取值为1,2,3后台根据info查询不同的结果
 function sendQueryInfo(info1, info2, info3) {
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.open("Get", "/PhonePlaza/control/PhoneQueryServlet?info1=" + info1
@@ -75,7 +76,11 @@ var creatLi = function(json, info2) {
 		p3.style.height = "20px";
 		p3.style.color = "blue";
 		p3.style.display = "none";
-		p3.innerHTML = "添加收藏";
+		if(info2==2||info2==1||info2==3||info2==4||info2==5){
+			p3.innerHTML = "添加收藏";
+		}else{
+			p3.innerHTML = "取消收藏";
+		}
 		ul.appendChild(li1);
 		li1.appendChild(img1);
 		li1.appendChild(p1);
@@ -97,20 +102,16 @@ var creatLi = function(json, info2) {
 				return sendId(jsonitem);
 			}, false)
 		})(jsonitem);
-		!(function(p2,p3,info2) {
+		!(function(p2,p3) {
 			li1.addEventListener("mouseover", function() {
 				p2.style.display = "block";
-				if(info2==2){
 					p3.style.display = "block";
-				}
 			}, false)
 		})(p2,p3,info2);
 		!(function(p2,p3) {
 			li1.addEventListener("mouseleave", function() {
 				p2.style.display = "none";
-				if(info2==2){
 					p3.style.display = "none";
-				}
 			}, false)
 		})(p2,p3);
 		!(function(p2, jsonitem) {
@@ -120,7 +121,11 @@ var creatLi = function(json, info2) {
 		})(p2, jsonitem);
 		!(function(p3, jsonitem) {
 			p3.addEventListener("click", function() {
-				sendUserPhone(jsonitem);
+				if(info2==2||info2==1||info2==3||info2==4||info2==5){
+					sendUserPhone(jsonitem);
+				}else{
+					deleteUserPhone(jsonitem);
+				}
 			}, false)
 		})(p3, jsonitem);
 
@@ -153,7 +158,36 @@ function sendUserPhone(phonename) {
 		alert("请您先登录");
 	}
 }
-
+//取消收藏
+function deleteUserPhone(phonename){
+	var username;
+	if (window.sessionStorage.getItem("username")) {
+		username = window.sessionStorage.getItem("username");
+		$.ajax({
+			url : "/PhonePlaza/control/DeleteUserPhoneServlet",
+			data : {
+				"username" : username,
+				"phonename" : phonename
+			},
+			type : "post",
+			async : false,
+			success : function(data) {
+				var msg = JSON.parse(data);
+				alert(data);
+				if (msg.del) {
+					alert("取消收藏成功");
+					window.location.reload(true);
+				}
+				if (!msg.del) {
+					alert("取消收藏失败");
+					window.location.reload(true);
+				}
+			}
+		})
+	} else {
+		alert("请您先登录");
+	}
+}
 // 根据price排序
 function sortByprice() {
 	var ul = document.getElementById("phone-ul");

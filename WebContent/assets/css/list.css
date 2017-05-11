@@ -40,6 +40,7 @@ li{
 	width: 800px;
 	height: 1320px;
 	background-color: #fff;
+	overflow: auto;
 }
 .content-list .content-title{
 	height: 60px;
@@ -63,7 +64,7 @@ li{
 	height: 20px;
 }
  .content-phone{
- 	height: 1260px;
+ 	height: 1500px;
  }
  .content-phone ul{
  	width: 100%;

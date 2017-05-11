@@ -51,7 +51,7 @@
 	cursor: pointer;
 }
 
-.header .login {
+.header .login ul{
 	float: right;
 	margin-top: 60px;
 	margin-right: 50px;
@@ -65,7 +65,7 @@
 .header .login .inner_logout {
 	color: white;
 }
-.header .menu{
+.header .menu ul{
 	float: right;
 	margin-top: 60px;
 	margin-right: 50px;

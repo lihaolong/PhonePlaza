@@ -38,6 +38,7 @@ public class PhoneQueryServlet extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		response.setCharacterEncoding("utf-8");
 		System.out.println(info1+info2+info3);
 		response.getWriter().write(json.toString());
 	}

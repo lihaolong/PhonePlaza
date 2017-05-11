@@ -11,11 +11,13 @@ import org.json.JSONObject;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class urlDAO {
+public class UrlDAO {
 	private static String insertSql = "insert into urlinfo(url,title,para,time) values (?,?,?,?)";
 	private static String queryTop = "select * from urlinfo order by time desc limit 0,4";
 	//根据网站查询最大时间
 	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
+	private static String queryByPhone = "select * from urlinfo where title like concat('%',?,'%') order by time desc limit 3";
+	private static String countUrl = "select count(url) as count from urlinfo where title like concat('%',?,'%')";
 	
 	//插入url
 	public void insertURL(String url,String title,String para,Date time) throws SQLException{
@@ -56,5 +58,33 @@ public class urlDAO {
 			jsonArray.put(jsonObj);
 		}
 		return jsonArray;
+	}
+	//根据手机查询url
+	public JSONArray queryByPhone(String phonename) throws SQLException, JSONException{
+		JSONArray jsonArray = new JSONArray();
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryByPhone);
+		pst.setString(1, phonename);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()){
+			JSONObject json = new JSONObject();
+			json.put("url", rs.getString("url"));
+			json.put("title", rs.getString("title"));
+			json.put("time", rs.getTimestamp("time"));
+			json.put("para", rs.getString("para"));
+			jsonArray.put(json);
+		}
+		System.out.println(jsonArray.toString());
+		return jsonArray;
+	}
+	//查询得到的url数目
+	public int countUrl(String phonename) throws SQLException{
+		int count = 0;
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(countUrl);
+		pst.setString(1, phonename);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()){
+			count = rs.getInt("count");
+		}
+		return count;
 	}
 }

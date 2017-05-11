@@ -12,6 +12,7 @@ import model.UserPhone;
 public class UserPhoneDAO {
 	private static String insert = "insert into userphone (username,phonename) values (?,?)";
 	private static String query = "select username,phonename from userphone";
+	private static String delete = "delete from userphone where username=? and phonename=?";
 	
 	public void insert(String userName,String phoneName) throws SQLException{
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(insert);
@@ -36,5 +37,12 @@ public class UserPhoneDAO {
 			e.printStackTrace();
 		}
 		return uList;
+	}
+	
+	public boolean delete(String username,String phonename) throws SQLException{
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(delete);
+		pst.setString(1, username);
+		pst.setString(2, phonename);
+		return pst.execute();
 	}
 }

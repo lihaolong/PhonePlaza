@@ -2,6 +2,18 @@ jQuery(document).ready(function() {
 	isLogin();
 	var json = window.sessionStorage.getItem("phoneinfo");
 	jsonp = JSON.parse(json);
+	var phonename = jsonp.phonename;
+	var phonebrand = jsonp.phonebrand;
+	alert(phonebrand);
+	$.ajax({
+		url:"/PhonePlaza/control/GetUrlInfoServlet",
+		type: "post",
+		data:{"phonename":phonename,"phonebrand":phonebrand},
+		success:function(msg){
+			//alert(msg);
+			updateURL(msg);
+		}
+	})
 	document.getElementById("selltime").innerHTML = jsonp.selltime;
 	document.getElementById("weight").innerHTML = jsonp.weight;
 	document.getElementById("thickness").innerHTML = jsonp.thickness;

@@ -9,31 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import DAO.UrlDAO;
-@WebServlet("/URLServlet")
-public class URLServlet extends HttpServlet {
+import DAO.UserPhoneDAO;
+@WebServlet("/DeleteUserPhoneServlet")
+public class DeleteUserPhoneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public URLServlet() {
+    public DeleteUserPhoneServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获得top4 URL信息
-		UrlDAO urlDao = new UrlDAO();
-		JSONArray jsonArray = new JSONArray();
+		String phonename = request.getParameter("phonename");
+		String username = request.getParameter("username");
 		
+		UserPhoneDAO userPhoneDAO = new UserPhoneDAO();
+		JSONObject json = new JSONObject();
 		try {
-			jsonArray = urlDao.queryTop();
-		} catch (JSONException e) {
-			e.printStackTrace();
+			if(!userPhoneDAO.delete(username, phonename)){
+				json.put("del", true);
+			}
+			else{
+				json.put("del", false);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		//System.out.println(jsonArray.toString());
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().write(jsonArray.toString());
+		response.getWriter().write(json.toString());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

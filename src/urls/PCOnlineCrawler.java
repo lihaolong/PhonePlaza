@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import DAO.urlDAO;
+import DAO.UrlDAO;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
@@ -20,7 +20,7 @@ public class PCOnlineCrawler extends BreadthCrawler {
 	 *            if autoParse is true,BreadthCrawler will auto extract links
 	 *            which match regex rules from pag
 	 */
-	private urlDAO urlDao = new urlDAO();
+	private UrlDAO urlDao = new UrlDAO();
 	Timestamp timeMax = null;
 	public PCOnlineCrawler(String crawlPath, boolean autoParse) {
 		super(crawlPath, autoParse);

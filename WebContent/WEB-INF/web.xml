@@ -49,12 +49,36 @@
     <servlet-name>DologinServlet</servlet-name>
     <url-pattern>/control/DologinServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>UserPhoneServlet</servlet-name>
     <servlet-class>control.UserPhoneServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserPhoneServlet</servlet-name>
     <url-pattern>/control/UserPhoneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteUserPhoneServlet</servlet-name>
+    <servlet-class>control.DeleteUserPhoneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserPhoneServlet</servlet-name>
+    <url-pattern>/control/DeleteUserPhoneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VideoServlet</servlet-name>
+    <servlet-class>control.VideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoServlet</servlet-name>
+    <url-pattern>/control/VideoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetUrlInfoServlet</servlet-name>
+    <servlet-class>control.GetUrlInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUrlInfoServlet</servlet-name>
+    <url-pattern>/control/GetUrlInfoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

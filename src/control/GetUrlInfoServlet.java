@@ -13,27 +13,31 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import DAO.UrlDAO;
-@WebServlet("/URLServlet")
-public class URLServlet extends HttpServlet {
+@WebServlet("/GetUrlInfoServlet")
+public class GetUrlInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public URLServlet() {
+    public GetUrlInfoServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获得top4 URL信息
-		UrlDAO urlDao = new UrlDAO();
-		JSONArray jsonArray = new JSONArray();
+		request.setCharacterEncoding("utf-8");
+		String phonename = request.getParameter("phonename");
+		String phonebrand = request.getParameter("phonebrand");
 		
+		
+		UrlDAO urlDAO = new UrlDAO();
+		JSONArray jsonArr = new JSONArray();
 		try {
-			jsonArray = urlDao.queryTop();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+			if(urlDAO.countUrl(phonename)<3){
+				jsonArr = urlDAO.queryByPhone(phonebrand);
+			}else{
+				jsonArr =	urlDAO.queryByPhone(phonename);
+			}
+		} catch (SQLException | JSONException e) {
 			e.printStackTrace();
 		}
-		//System.out.println(jsonArray.toString());
 		response.setCharacterEncoding("utf-8");
-		response.getWriter().write(jsonArray.toString());
+		response.getWriter().write(jsonArr.toString());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
