@@ -16,7 +16,7 @@ public class UrlDAO {
 	private static String queryTop = "select * from urlinfo order by time desc limit 0,4";
 	//根据网站查询最大时间
 	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
-	private static String queryByPhone = "select * from urlinfo where title like concat('%',?,'%') order by time desc limit 3";
+	private static String queryByPhone = "select * from urlinfo where title like concat('%',?,'%') order by time desc limit ?";
 	private static String countUrl = "select count(url) as count from urlinfo where title like concat('%',?,'%')";
 	
 	//插入url
@@ -60,10 +60,11 @@ public class UrlDAO {
 		return jsonArray;
 	}
 	//根据手机查询url
-	public JSONArray queryByPhone(String phonename) throws SQLException, JSONException{
+	public JSONArray queryByPhone(String phonename,int num) throws SQLException, JSONException{
 		JSONArray jsonArray = new JSONArray();
 		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(queryByPhone);
 		pst.setString(1, phonename);
+		pst.setInt(2, num);
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()){
 			JSONObject json = new JSONObject();

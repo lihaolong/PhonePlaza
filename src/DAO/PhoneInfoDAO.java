@@ -19,6 +19,7 @@ public class PhoneInfoDAO {
 	private static String sqlCpu = "select phonename,price,selltime from phoneinfo where phonename in (select phonename from phonecpucamera where cpuinfo in (select cpuname from cpuinfo where cpubrand = ?))";
 	private static String sqlScreenSize = "select phonename,selltime,price from phoneinfo where screensize>=? and screensize<=?";
 	private static String sqlCollection = "SELECT p.phonename,p.selltime,p.price FROM phoneinfo p LEFT JOIN userphone u ON p.phonename = u.phonename WHERE u.username=?";
+	private static String sqlSearch = "select phonename,selltime,price from phoneinfo where phonename like concat('%',?,'%') or phonebrand like concat ('%',?,'%')";
 	
 	public PhoneInfo query(String phoneName) throws SQLException {
 		PhoneInfo phoneInfo = new PhoneInfo();
@@ -123,5 +124,21 @@ public class PhoneInfoDAO {
 		}
 		System.out.println(jsonArray);
 		return jsonArray;
+	}
+	//根据手机名称或品牌查询手机
+	public JSONArray querySearch(String phonename,String phonebrand) throws SQLException, JSONException{
+		JSONArray json = new JSONArray();
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlSearch);
+		pst.setString(1, phonename);
+		pst.setString(2, phonebrand);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()){
+			JSONObject jsonLan = new JSONObject();
+			jsonLan.put("phonename", rs.getString("phonename"));
+			jsonLan.put("selltime", rs.getDate("selltime"));
+			jsonLan.put("price", rs.getInt("price"));
+			json.put(jsonLan);
+		}
+		return json;
 	}
 }

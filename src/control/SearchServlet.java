@@ -12,31 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import DAO.UrlDAO;
-@WebServlet("/GetUrlInfoServlet")
-public class GetUrlInfoServlet extends HttpServlet {
+import DAO.PhoneInfoDAO;
+@WebServlet("/SearchServlet")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public GetUrlInfoServlet() {
+    public SearchServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String phonename = request.getParameter("phonename");
-		String phonebrand = request.getParameter("phonebrand");
-		
-		
-		UrlDAO urlDAO = new UrlDAO();
+		String text = request.getParameter("text");
+		System.out.println("text:"+text);
+		PhoneInfoDAO phoneInfoDAO = new PhoneInfoDAO();
 		JSONArray jsonArr = new JSONArray();
 		try {
-			if(phonebrand!=null){
-			if(urlDAO.countUrl(phonename)<3){
-				jsonArr = urlDAO.queryByPhone(phonebrand,3);
-			}else{
-				jsonArr =	urlDAO.queryByPhone(phonename,3);
-			}
-			}else{
-				jsonArr = urlDAO.queryByPhone(phonename, 10);
-			}
+			jsonArr = phoneInfoDAO.querySearch(text, text);
 		} catch (SQLException | JSONException e) {
 			e.printStackTrace();
 		}

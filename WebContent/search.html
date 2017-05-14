@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="SHORTCUT ICON"
+	href="http://localhost:8080/PhonePlaza/assets/img/logo2.ico" />
+<link rel="css normalize"
+	href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" />
+<link rel="stylesheet" href="assets/css/header.css" />
+<link rel="stylesheet" href="assets/css/search.css" />
+<link rel="stylesheet" href="assets/css/list.css" />
+<script type="text/javascript" src="assets/js/msgtrans.js"></script>
+<script type="text/javascript" src="assets/js/menu.js"></script>
+<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="assets/js/search.js"></script>
+<script type="text/javascript" src="assets/js/contentlist.js"></script>
+<title>搜索</title>
+</head>
+<body>
+	<div class="header">
+		<ul class="inner_header1">
+			<li><img src="assets/img/logo2.png" alt="logo" /></li>
+			<li class="logo"><a
+				style="font-size: 36px; color: white; font-style: italic; font-weight: bolder"
+				href="index.html">PhonePlaza</a></li>
+			<li class="first_page"><a style="font-size: 20px; color: white;"
+				href="index.html">首页</a></li>
+			<li class="phone_list"><a style="font-size: 20px; color: white;"
+				href="list.html">机型列表</a></li>
+			<li class="phone_compare"><a
+				style="font-size: 20px; color: white;">手机对比</a></li>
+		</ul>
+		<div class="inner_search">
+			<input type="text" placeholder="搜索手机或专题" id="search" /> <span
+				class="search_btn"
+				style="background-image: url(assets/img/search_btn.png)"
+				onclick="searchjump();"></span>
+		</div>
+		<div class="login" id="login">
+			<ul>
+				<li><a class="inner_login" href="login.html">登录</a></li>
+				<li><a class="inner_logout" href="reg.html">注册</a></li>
+			</ul>
+		</div>
+		<div class="menu" id="menu">
+			<ul>
+				<li><img alt="user" src="assets/img/user.png"></li>
+				<li><a id="username">username</a></li>
+				<li><a href="login.html">更新</a></li>
+				<li><a href="collection.html" target="blank">收藏</a></li>
+				<li><a onclick="exit();">退出</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content-search">
+	<h2 id="text"></h2>
+	<h4>手机相关</h4>
+	<div class="content-phone">
+				<ul id="phone-ul">
+				</ul>
+			</div>
+	</div>
+	<h4>评测相关</h4>
+	<div class="footer">
+		<div class="footer-text">
+			© PhonePlaza 版权所有<br /> 选手机，上PhonePlaza!
+		</div>
+	</div>
+</body>
+</html>
