@@ -9,11 +9,13 @@
 <link rel="stylesheet" href="assets/css/header.css" />
 <link rel="stylesheet" href="assets/css/search.css" />
 <link rel="stylesheet" href="assets/css/list.css" />
+<link rel="stylesheet" href="assets/css/hotnews.css"/>
 <script type="text/javascript" src="assets/js/msgtrans.js"></script>
 <script type="text/javascript" src="assets/js/menu.js"></script>
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="assets/js/search.js"></script>
 <script type="text/javascript" src="assets/js/contentlist.js"></script>
+<script type="text/javascript" src="assets/js/searchjump.js"></script>
 <title>搜索</title>
 </head>
 <body>
@@ -54,13 +56,37 @@
 	</div>
 	<div class="content-search">
 	<h2 id="text"></h2>
-	<h4>手机相关</h4>
+	<h4 id="aboutphone">手机相关</h4>
 	<div class="content-phone">
 				<ul id="phone-ul">
 				</ul>
 			</div>
 	</div>
-	<h4>评测相关</h4>
+	<div class="hotnews" id="news-wrapper">
+	<h4 style="padding-left: 150px;" id="abouturl">评测相关</h4>
+	<!-- <div class="hotnews01">
+				<p class="pic01">
+					<a href="index.html"><img alt="zol01"
+						src="assets/img/hotnews/zol01.jpg"></a>
+				</p>
+				<h3>
+					<a id="title3" class="title01"
+						href="http://mobile.zol.com.cn/632/6325564.html"
+						onclick="news03()" target="_blank">HUAWEI nova青春版评测 17层光学处理</a>
+				</h3>
+				<p id="para3" class="pra">2017年3月24日华为召开了今年国内首场发布会，发布了备受瞩目的华为P10外，还发布了深受青年人喜爱的HUAWEI
+					nova 青春版，这款手机吸引了大量年轻朋友的关注。</p>
+				<div>
+					<span id="time3" class="time">2017年3月38日</span> <span class="count">阅读（<span
+						id="news03">1</span>）
+					</span>
+				</div>
+	</div> -->
+	</div>
+	<div id="compare-frame">
+			<ul id="compare-ul">
+			</ul>
+		</div>
 	<div class="footer">
 		<div class="footer-text">
 			© PhonePlaza 版权所有<br /> 选手机，上PhonePlaza!

@@ -61,7 +61,7 @@ public class FviewCrawler extends BreadthCrawler {
 
 	public static void main(String[] args) throws Exception {
 		FviewCrawler crawler = new FviewCrawler("crawl", true);
-		crawler.setThreads(200);
+		crawler.setThreads(100);
 		crawler.setTopN(100);
 		// crawler.setResumable(true);
 		/* start crawl with depth of 4 */

@@ -20,6 +20,8 @@ public class PhoneInfoDAO {
 	private static String sqlScreenSize = "select phonename,selltime,price from phoneinfo where screensize>=? and screensize<=?";
 	private static String sqlCollection = "SELECT p.phonename,p.selltime,p.price FROM phoneinfo p LEFT JOIN userphone u ON p.phonename = u.phonename WHERE u.username=?";
 	private static String sqlSearch = "select phonename,selltime,price from phoneinfo where phonename like concat('%',?,'%') or phonebrand like concat ('%',?,'%')";
+	//根据手机型号查询品牌
+	private static String sqlByPhonename = "select phonebrand from phoneinfo where phonename = ?";
 	
 	public PhoneInfo query(String phoneName) throws SQLException {
 		PhoneInfo phoneInfo = new PhoneInfo();
@@ -140,5 +142,16 @@ public class PhoneInfoDAO {
 			json.put(jsonLan);
 		}
 		return json;
+	}
+	//根据手机型号查询品牌
+	public String queryPhonebrand(String phonename) throws SQLException{
+		String phonebrand = null;
+		PreparedStatement pst = (PreparedStatement) ClientDB.getCon().prepareStatement(sqlByPhonename);
+		pst.setString(1, phonename);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()){
+		phonebrand = rs.getString("phonebrand");
+		}
+		return phonebrand;
 	}
 }

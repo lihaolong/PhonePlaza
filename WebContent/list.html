@@ -13,6 +13,7 @@
 <script type="text/javascript" src="assets/js/list.js"></script>
 <script type="text/javascript" src="assets/js/menu.js"></script>
 <script type="text/javascript" src="assets/js/contentlist.js"></script>
+<script type="text/javascript" src="assets/js/searchjump.js"></script>
 <title>机型列表</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
 		</ul>
 		<div class="inner_search">
 			<input type="text" placeholder="搜索手机或专题" /> <span class="search_btn"
-				style="background-image: url(assets/img/search_btn.png)"
+				style="background-image: url(assets/img/search_btn.png)" onclick="searchjump();"
 				></span>
 		</div>
 		<div class="login" id="login">
@@ -57,10 +58,10 @@
 				<div class="line"></div>
 				<ul>
 					<li><a id="华为" onclick="sendQueryInfo(this.id,1);">华为</a></li>
-					<li><a>小米</a></li>
+					<li><a id="小米" onclick="sendQueryInfo(this.id,1);">小米</a></li>
 					<li><a id="魅族" onclick="sendQueryInfo(this.id,1);">魅族</a></li>
-					<li><a>OPPO</a></li>
-					<li><a>vivo</a></li>
+					<li><a id="oppo" onclick="sendQueryInfo(this.id,1);">OPPO</a></li>
+					<li><a id="vivo" onclick="sendQueryInfo(this.id,1);">vivo</a></li>
 					<li><a id="三星" onclick="sendQueryInfo(this.id,1);">三星</a></li>
 					<li><a id="苹果" onclick="sendQueryInfo(this.id,1);">苹果</a></li>
 				</ul>

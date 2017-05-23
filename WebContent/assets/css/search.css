@@ -1,7 +1,11 @@
 @CHARSET "UTF-8";
-
 .content-search{
-	_height: 800px;
-	min-height: 800px;
+	height: 600px;
 	padding-left: 400px;
+}
+.hotnews{
+	padding-left: 250px;
+	overflow: auto;
+	height: 1000px; 
+	padding-bottom: 100px;
 }

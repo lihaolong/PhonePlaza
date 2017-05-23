@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import DAO.PhoneInfoDAO;
 import DAO.UrlDAO;
 @WebServlet("/GetUrlInfoServlet")
 public class GetUrlInfoServlet extends HttpServlet {
@@ -24,6 +25,14 @@ public class GetUrlInfoServlet extends HttpServlet {
 		String phonename = request.getParameter("phonename");
 		String phonebrand = request.getParameter("phonebrand");
 		
+		PhoneInfoDAO phoneInfoDAO = new PhoneInfoDAO();
+		if(phonebrand==null){
+			try {
+				phonebrand = phoneInfoDAO.queryPhonebrand(phonename);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		UrlDAO urlDAO = new UrlDAO();
 		JSONArray jsonArr = new JSONArray();
