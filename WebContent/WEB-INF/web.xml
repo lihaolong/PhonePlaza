@@ -89,4 +89,12 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/control/SearchServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>GetCollectionURLServlet</servlet-name>
+    <servlet-class>control.GetCollectionURLServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCollectionURLServlet</servlet-name>
+    <url-pattern>/control/GetCollectionURLServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

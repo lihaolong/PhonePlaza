@@ -16,7 +16,7 @@ public class UrlDAO {
 	private static String queryTop = "select distinct * from urlinfo order by time desc limit 0,4";
 	//根据网站查询最大时间
 	private static String maxTime = "SELECT time FROM urlinfo WHERE url LIKE CONCAT('%',?,'%') ORDER BY time DESC LIMIT 1";
-	private static String queryByPhone = "select distinct * from urlinfo where title like concat('%',?,'%') order by time desc limit ?";
+	private static String queryByPhone = "select distinct url,title,time,para from urlinfo where title like concat('%',?,'%') order by time desc limit ?";
 	private static String countUrl = "select count(url) as count from urlinfo where title like concat('%',?,'%')";
 	
 	//插入url

@@ -3,9 +3,14 @@
 	height: 600px;
 	padding-left: 400px;
 }
+
 .hotnews{
 	padding-left: 250px;
 	overflow: auto;
 	height: 1000px; 
 	padding-bottom: 100px;
+}
+
+#search-phone{
+	height: auto;
 }
