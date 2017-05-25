@@ -16,7 +16,7 @@
 <title>手机对比</title>
 </head>
 <body>
-<div class="header">
+	<div class="header">
 		<ul class="inner_header1">
 			<li><img src="assets/img/logo2.png" alt="logo" /></li>
 			<li class="logo"><a
@@ -31,200 +31,288 @@
 		</ul>
 		<div class="inner_search">
 			<input type="text" placeholder="搜索手机或专题" /> <span class="search_btn"
-				style="background-image: url(assets/img/search_btn.png)" onclick="searchjump();"
-				onclick="index.html"></span>
+				style="background-image: url(assets/img/search_btn.png)"
+				onclick="searchjump();" onclick="index.html"></span>
 		</div>
 		<div class="login" id="login">
 			<ul>
-			<li><a class="inner_login" href="login.html">登录</a></li>
-			<li><a class="inner_logout" href="reg.html">注册</a></li>
+				<li><a class="inner_login" href="login.html">登录</a></li>
+				<li><a class="inner_logout" href="reg.html">注册</a></li>
 			</ul>
 		</div>
 		<div class="menu" id="menu">
-		<ul>
-		<li><img alt="user" src="assets/img/user.png"></li>
-		<li><a id="username">username</a></li>
-		<li><a href="collection.html" target="blank">收藏</a></li>
-		<li><a onclick="exit();">退出</a></li>
-		</ul>
+			<ul>
+				<li><img alt="user" src="assets/img/user.png"></li>
+				<li><a id="username">username</a></li>
+				<li><a href="collection.html" target="blank">收藏</a></li>
+				<li><a onclick="exit();">退出</a></li>
+			</ul>
 		</div>
 	</div>
 	<div class="content">
-	<div class="phone-pic">
-	<div class="phone1">
-	<ul>
-	<li><span class="phone1-title" id="phonenamespan1">mate9</span></li>
-	<li><img alt="phoneimg" src=""  id="phoneimg1"></li>
-	<li><span class="phone1=price" style="color: red" id="pricespan1">1999</span></li>
-	</ul>
-	</div>
-	<div class="phone2">
-	<ul>
-	<li><span class="phone1-title" id="phonenamespan2">mate9</span></li>
-	<li><img alt="phoneimg" src=""  id="phoneimg2"></li>
-	<li><span class="phone1=price" style="color: red" id="pricespan2">1999</span></li>
-	</ul>
-	</div>
-	</div>
-	<div class="comparelist">
-	<div class="title">
-					<p class="title-info">配置参数</p>
-					<div class="line-short"></div>
-				</div>
-				<div class="selltime">
-					<h3>上市时间</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="selltime1">2016-11-11</p>
-						<p class="selltime-p" id="selltime2">2016-12-12</p>
+		<div class="phone-pic">
+			<div class="phone1">
+				<ul>
+					<li><span class="phone1-title" id="phonenamespan1">mate9</span></li>
+					<li><img alt="phoneimg" src="" id="phoneimg1"></li>
+					<li><span class="phone1=price" style="color: red"
+						id="pricespan1">1999</span></li>
+				</ul>
+			</div>
+			<div class="phone2">
+				<ul>
+					<li><span class="phone1-title" id="phonenamespan2">mate9</span></li>
+					<li><img alt="phoneimg" src="" id="phoneimg2"></li>
+					<li><span class="phone1=price" style="color: red"
+						id="pricespan2">1999</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="comparelist">
+			<div class="title">
+				<p class="title-info">配置参数</p>
+				<div class="line-short"></div>
+			</div>
+			<div class="selltime">
+				<h3>上市时间</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="selltime1">2016-11-11</p>
+					<p class="selltime-p" id="selltimecomresult1" style="color: red;">机型较新</p>
+					<p class="selltime-p" id="selltime2">2016-12-12></p>
+					<p class="selltime-p" id="selltimecomresult2" style="color: red;">机型较新</p>
 					</div>
-				</div>
-				<div class="selltime">
-					<h3>重量</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="weight1">150g</p>
-						<p class="selltime-p" id="weight2">150g</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>厚度</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="thickness1">7.5mm</p>
-						<p class="selltime-p" id="thickness2">7.5mm</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>ram</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="ram1">2GB</p>
-						<p class="selltime-p" id="ram2">2GB</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>rom</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="rom1">32GB</p>
-						<p class="selltime-p" id="rom2">32GB</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>价格</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="price1">3199</p>
-						<p class="selltime-p" id="price2">3199</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>屏幕-尺寸</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="screensize1">5.5寸</p>
-						<p class="selltime-p" id="screensize2">5.5寸</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>屏幕-材质</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="screenmaterial1">LCD</p>
-						<p class="selltime-p" id="screenmaterial2">LCD</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>屏幕-像素</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="screenpx1">1920*1080</p>
-						<p class="selltime-p" id="screenpx2">1920*1080</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-品牌</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cpubrand1">高通</p>
-						<p class="selltime-p" id="cpubrand2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-型号</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuname1">高通</p>
-						<p class="selltime-p" id="cpuname2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-核芯</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cpucorenum1">高通</p>
-						<p class="selltime-p" id="cpucorenum2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-频率</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuhz1">高通</p>
-						<p class="selltime-p" id="cpuhz2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-GPU</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="gpu1">高通</p>
-						<p class="selltime-p" id="gpu2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>CPU-制程</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cpuprocess1">高通</p>
-						<p class="selltime-p" id="cpuprocess2">高通</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>相机-型号</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="cameraname1">3199</p>
-						<p class="selltime-p" id="cameraname2">3199</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>相机-像素</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="camerapx1">3199</p>
-						<p class="selltime-p" id="camerapx2">3199</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>相机-光圈</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="sperture1">3199</p>
-						<p class="selltime-p" id="sperture2">3199</p>
-					</div>
-				</div>
-				<div class="selltime">
-					<h3>相机-光学防抖</h3>
-					<div class="selltime-inner">
-						<div class="line-long"></div>
-						<p class="selltime-p" id="supportois1">3199</p>
-						<p class="selltime-p" id="supportois2">3199</p>
-					</div>
+			</div>
+			<div class="selltime">
+				<h3>重量</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="weight1">150g</p>
+					<p class="selltime-p" id="weightcomresult1" style="color: red;">机身更轻</p>
+					<p class="selltime-p" id="weight2">150g</p>
+					<p class="selltime-p" id="weightcomresult2" style="color: red;">机身更轻</p>
 				</div>
 			</div>
+			<div class="selltime">
+				<h3>厚度</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="thickness1">7.5mm</p>
+					<p class="selltime-p" id="thicknesscomresult1" style="color: red;">机身更薄</p>
+					<p class="selltime-p" id="thickness2">7.5mm</p>
+					<p class="selltime-p" id="thicknesscomresult2" style="color: red;">机身更薄</p>
+				</div>
 			</div>
+			<div class="selltime">
+				<h3>电池容量</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="battery1">7.5mm</p>
+					<p class="selltime-p" id="batterycomresult1" style="color: red;">电池容量更大</p>
+					<p class="selltime-p" id="battery2">7.5mm</p>
+					<p class="selltime-p" id="batterycomresult2" style="color: red;">电池容量更大</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>ram</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="ram1">2GB</p>
+					<p class="selltime-p" id="ramcomresult1" style="color: red;">运行内存更大</p>
+					<p class="selltime-p" id="ram2">2GB</p>
+					<p class="selltime-p" id="ramcomresult2" style="color: red;">运行内存更大</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>rom</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="rom1">32GB</p>
+					<p class="selltime-p" id="romcomresult1" style="color: red;">机身内存更大</p>
+					<p class="selltime-p" id="rom2">32GB</p>
+					<p class="selltime-p" id="romcomresult2" style="color: red;">机身内存更大</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>价格</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="price1">3199</p>
+					<p class="selltime-p" id="pricecomresult1" style="color: red;">价格更低</p>
+					<p class="selltime-p" id="price2">3199</p>
+					<p class="selltime-p" id="pricecomresult2" style="color: red;">价格更低</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>屏幕-尺寸</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="screensize1">5.5寸</p>
+					<p class="selltime-p" id="screensizecomresult1" style="color: red;">屏幕尺寸更大</p>
+					<p class="selltime-p" id="screensize2">5.5寸</p>
+					<p class="selltime-p" id="screensizecomresult2" style="color: red;">屏幕尺寸更大</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>屏幕-材质</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="screenmaterial1">LCD</p>
+					<p class="selltime-p" id="comresult" style="color: red;"></p>
+					<p class="selltime-p" id="screenmaterial2">LCD</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>屏幕-像素</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="screenpx1">1920*1080</p>
+					<p class="selltime-p" id="screenpxcomresult1" style="color: red;">屏幕像素更高</p>
+					<p class="selltime-p" id="screenpx2">1920*1080</p>
+					<p class="selltime-p" id="screenpxcomresult2" style="color: red;">屏幕像素更高</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-品牌</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cpubrand1">高通</p>
+					<p class="selltime-p" id="comresult" style="color: red;"></p>
+					<p class="selltime-p" id="cpubrand2">高通</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-型号</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cpuname1">高通</p>
+					<p class="selltime-p" id="comresult" style="color: red;"></p>
+					<p class="selltime-p" id="cpuname2">高通</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-核芯</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cpucorenum1">高通</p>
+					<p class="selltime-p" id="cpucorenumcomresult1" style="color: red;">CPU核芯数更多</p>
+					<p class="selltime-p" id="cpucorenum2">高通</p>
+					<p class="selltime-p" id="cpucorenumcomresult2" style="color: red;">CPU核芯数更多</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-频率</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cpuhz1">高通</p>
+					<p class="selltime-p" id="cpuhzcomresult1" style="color: red;">CPU频率更高</p>
+					<p class="selltime-p" id="cpuhz2">高通</p>
+					<p class="selltime-p" id="cpuhzcomresult2" style="color: red;">CPU频率更高</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-GPU</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="gpu1">高通</p>
+					<p class="selltime-p" id="comresult" style="color: red;"></p>
+					<p class="selltime-p" id="gpu2">高通</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>CPU-制程</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cpuprocess1">高通</p>
+					<p class="selltime-p" id="cpuprocesscomresult1" style="color: red;">CPU制程更先进</p>
+					<p class="selltime-p" id="cpuprocess2">高通</p>
+					<p class="selltime-p" id="cpuprocesscomresult2" style="color: red;">CPU制程更先进</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>相机-型号</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="cameraname1">3199</p>
+					<p class="selltime-p" id="comresult" style="color: red;"></p>
+					<p class="selltime-p" id="cameraname2">3199</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>相机-像素</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="camerapx1">3199</p>
+					<p class="selltime-p" id="camerapxcomresult1" style="color: red;">相机像素更高</p>
+					<p class="selltime-p" id="camerapx2">3199</p>
+					<p class="selltime-p" id="camerapxcomresult2" style="color: red;">相机像素更高</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>相机-光圈</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="sperture1">3199</p>
+					<p class="selltime-p" id="sperturecomresult1" style="color: red;">光圈更大</p>
+					<p class="selltime-p" id="sperture2">3199</p>
+					<p class="selltime-p" id="sperturecomresult2" style="color: red;">光圈更大</p>
+				</div>
+			</div>
+			<div class="selltime">
+				<h3>相机-光学防抖</h3>
+				<div class="selltime-inner">
+					<div class="line-long"></div>
+					<p class="selltime-p" id="supportois1">3199</p>
+					<p class="selltime-p" id="supportoiscomresult1" style="color: red;">拍照稳定</p>
+					<p class="selltime-p" id="supportois2">3199</p>
+					<p class="selltime-p" id="supportoiscomresult2" style="color: red;">拍照稳定</p>
+				</div>
+			</div>
+		</div>
+		<div class="comresult">
+			<div class="title">
+				<p class="title-info">对比结果</p>
+				<div class="line-short"></div>
+				</div>
+				<div class="resshow">
+				<div class="show1">
+				<p id="selltimeresult1"></p>
+				<p id="weightresult1"></p>
+				<p id="thicknessresult1"></p>
+				<p id="batteryresult1"></p>
+				<p id="ramresult1"></p>
+				<p id="romresult1"></p>
+				<p id="priceresult1"></p>
+				<p id="screensizeresult1"></p>
+				<p id="screenpxresult1"></p>
+				<p id="cpucorenumresult1"></p>
+				<p id="cpuhzresult1" ></p>
+				<p id="cpuprocessresult1"></p>
+				<p id="camerapxresult1"></p>
+				<p id="spertureresult1"></p>
+				<p id="supportoisresult1"></p>
+				</div>
+				<div class="show1">
+				<p id="selltimeresult2"></p>
+				<p id="weightresult2"></p>
+				<p id="thicknessresult2"></p>
+				<p id="batteryresult2"></p>
+				<p id="ramresult2"></p>
+				<p id="romresult2"></p>
+				<p id="priceresult2"></p>
+				<p id="screensizeresult2"></p>
+				<p id="screenpxresult2"></p>
+				<p id="cpucorenumresult2"></p>
+				<p id="cpuhzresult2"></p>
+				<p id="cpuprocessresult2"></p>
+				<p id="camerapxresult2"></p>
+				<p id="spertureresult2"></p>
+				<p id="supportoisresult2"></p>
+				</div>
+				</div>
+			</div>
+	</div>
+
 	<div class="footer">
 		<div class="footer-text">
 			© PhonePlaza 版权所有<br /> 选手机，上PhonePlaza!

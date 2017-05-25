@@ -86,7 +86,7 @@ var creatLi = function(json, info2) {
 		li1.appendChild(p1);
 		li1.appendChild(p2);
 		li1.appendChild(p3);
-		p1.innerHTML = jsonp[phonename].phonename;
+		p1.innerHTML = jsonp[phonename].phonebrand+" "+jsonp[phonename].phonename;
 		p2.style.height = "20px";
 		p2.style.color = "blue";
 		p2.style.display = "none";

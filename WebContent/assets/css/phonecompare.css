@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .content {
-	height: 1500px;
+	height: 2100px;
 	background-color: rgba(0, 0, 0, 0.05);
 	position: relative;
 }
@@ -18,7 +18,7 @@
 .content .comparelist {
 	position: absolute; height : 800px;
 	background-color: #fff;
-	height: 800px; width : 1200px; background-color : #fff;
+	height: 800px; width : 1200px;
 	top: 600px;
 	left: 350px;
 	overflow: auto;
@@ -54,12 +54,12 @@
 	float: left;
 }
 
-.content .comparelist .title {
+.content .title {
 	text-align: center;
 	color: blue;
 }
 
-.content .comparelist .line-short {
+.content .line-short {
 	height: 1px;
 	width: 150px;
 	margin: 0 auto;
@@ -72,19 +72,43 @@
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
-.content .comparelist .selltime {
+.content .selltime {
 	position: relative;
 }
 
-.content .comparelist .selltime-inner {
+.content .selltime-inner {
 	position: absolute;
 	left: 180px;
 	top: 10px;
 }
-.content .comparelist .selltime-inner .selltime-p{
+.content .selltime-inner .selltime-p{
 	float: left;
-	width: 400px;
+	width: 200px;
 	text-align: center;
+}
+
+.content .comresult{
+	position: absolute;
+	background-color: #fff;
+	height: 400px; width : 1200px;
+	top: 1500px;
+	left: 350px;
+	overflow: auto;
+}
+.resshow{
+	height: 350px;
+}
+.show1{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.show1 p{
+	width: 275px;
+	float: left;
+	text-align: center;
+	color: red;
 }
 h3 {
 	color: blue;
