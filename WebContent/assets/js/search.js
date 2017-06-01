@@ -14,7 +14,7 @@ function sendsearch(text){
 		url:"/PhonePlaza/control/SearchServlet?text="+text,
 		type: "get",
 		success: function(msg){
-			//alert(msg);
+			alert(msg);
 			if(msg.length>3)
 				creatLi(msg,1);
 			else{

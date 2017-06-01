@@ -24,6 +24,7 @@ public class URLServlet extends HttpServlet {
 		UrlDAO urlDao = new UrlDAO();
 		JSONArray jsonArray = new JSONArray();
 		
+		//处理首页URL请求
 		try {
 			jsonArray = urlDao.queryTop();
 		} catch (JSONException e) {

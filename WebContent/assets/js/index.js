@@ -1,27 +1,27 @@
 jQuery(document)
 		.ready(
 				function() {
-					//初始化url
+					// 初始化url
 					var xmlHttp = new XMLHttpRequest();
 					xmlHttp.open("get", "/PhonePlaza/control/URLServlet", true)
 					xmlHttp.send();
-					xmlHttp.onreadystatechange = function(){
-					if(xmlHttp.readyState==4&&xmlHttp.status==200){
-						var msg = xmlHttp.responseText;
-						//alert(msg);
-						updateURL(msg);
+					xmlHttp.onreadystatechange = function() {
+						if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+							var msg = xmlHttp.responseText;
+							// alert(msg);
+							updateURL(msg);
+						}
 					}
-					}
-					//初始化视频url
+					// 初始化视频url
 					$.ajax({
-						url:"/PhonePlaza/control/VideoServlet",
-						type: "get",
-						success: function(videomsg){
-							//alert(videomsg);
+						url : "/PhonePlaza/control/VideoServlet",
+						type : "get",
+						success : function(videomsg) {
+							// alert(videomsg);
 							updateVideo(videomsg);
 						}
 					})
-					
+
 					isLogin();
 					$('.slider')
 							.each(
@@ -109,17 +109,14 @@ jQuery(document)
 										advance();// 循环播放图片
 									});
 				})
-				
 
-				
-
-//更新最新视频
-function updateVideo(videomsg){
+// 更新最新视频
+function updateVideo(videomsg) {
 	alert(videomsg);
 	json = JSON.parse(videomsg);
-	for(var info in json){
-		var title = document.getElementById("videotitle"+json[info].info);
-		var url = document.getElementById("url"+json[info].info);
+	for ( var info in json) {
+		var title = document.getElementById("videotitle" + json[info].info);
+		var url = document.getElementById("url" + json[info].info);
 		title.innerHTML = json[info].title;
 		url.href = json[info].url;
 	}

@@ -14,6 +14,7 @@ jQuery(document).ready(function() {
 			updateURL(msg);
 		}
 	})
+	document.getElementById("name").innerHTML = jsonp.phonebrand+" "+jsonp.phonename;
 	document.getElementById("selltime").innerHTML = jsonp.selltime;
 	document.getElementById("weight").innerHTML = jsonp.weight;
 	document.getElementById("thickness").innerHTML = jsonp.thickness;

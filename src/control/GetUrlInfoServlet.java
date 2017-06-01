@@ -25,6 +25,7 @@ public class GetUrlInfoServlet extends HttpServlet {
 		String phonename = request.getParameter("phonename");
 		String phonebrand = request.getParameter("phonebrand");
 		
+		//处理手机详情页URL请求
 		PhoneInfoDAO phoneInfoDAO = new PhoneInfoDAO();
 		if(phonebrand==null){
 			try {

@@ -20,7 +20,7 @@ public class PhoneInfoDAO {
 	private static String sqlScreenSize = "select phonename,selltime,price,phonebrand from phoneinfo where screensize>=? and screensize<=?";
 	private static String sqlCollection = "SELECT p.phonename,p.selltime,p.price,p.phonebrand FROM phoneinfo p LEFT JOIN userphone u ON p.phonename = u.phonename WHERE u.username=?";
 	//模糊匹配手机型号和手机品牌
-	private static String sqlSearch = "select phonename,selltime,price from phoneinfo where phonename like concat('%',?,'%') or phonebrand like concat ('%',?,'%')";
+	private static String sqlSearch = "select phonename,selltime,price,phonebrand from phoneinfo where phonename like concat('%',?,'%') or phonebrand like concat ('%',?,'%')";
 	//根据手机型号查询品牌
 	private static String sqlByPhonename = "select phonebrand from phoneinfo where phonename = ?";
 	

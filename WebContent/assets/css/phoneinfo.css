@@ -10,11 +10,16 @@
 	width: 100%;
 	position: relative;
 }
-
+.content .phoneinfo .phonename{
+	text-align: center;
+	font-size: 18;
+	font-weight: 800;
+	width: 150;
+}
 .content .phone-pic {
 	position: absolute;
 	top: 80px;
-	left: 290px;
+	left: 250px;
 	height: 800px;
 	width: 300px;
 	background-color: #fff;
@@ -23,7 +28,7 @@
 .content .phone-other {
 	position: absolute;
 	top: 80px;
-	right: 280px;
+	right: 250px;
 	height: 800px;
 	width: 800px;
 	background-color: #fff;

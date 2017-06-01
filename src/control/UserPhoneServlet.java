@@ -26,6 +26,7 @@ public class UserPhoneServlet extends HttpServlet {
 			String phoneName = request.getParameter("phonename");
 			System.out.println(userName+phoneName);
 			
+			//处理收藏请求
 			UserPhoneService userPhoneService = new UserPhoneService();
 			System.out.println(userPhoneService.isExit(userName, phoneName));
 			
